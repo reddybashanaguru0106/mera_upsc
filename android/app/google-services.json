@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "259870603309",
+    "project_id": "meraupsc-2d7f8",
+    "storage_bucket": "meraupsc-2d7f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259870603309:android:799e004cc64a62c05220a4",
+        "android_client_info": {
+          "package_name": "com.example.mera_upsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259870603309-btsqe0p5kntn4097muogpooem10drgp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKJJbDh7zJ4Pd5vdWKxrnGD6mqaKAW250"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259870603309-btsqe0p5kntn4097muogpooem10drgp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
