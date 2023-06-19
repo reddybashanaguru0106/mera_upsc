@@ -1,94 +1,73 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        appBar: null,
-        body: MyBackgroundImage(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Dashboard',
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      home: const HomeScreen(),
     );
   }
 }
 
-class MyBackgroundImage extends StatelessWidget {
-  const MyBackgroundImage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Scaffold(
+      body: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          Image.asset(
-            './images/mainLogo.png',
-            opacity: const AlwaysStoppedAnimation(80),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: FormExample(),
-          ),
+          Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius:
+                    const BorderRadius.only(bottomRight: Radius.circular(50))),
+            child: Column(
+              children: [
+                const SizedBox(height: 100),
+                ListTile(
+                  title: Center(
+                    child: Text('MERA UPSC',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(color: Colors.white)),
+                  ),
+                  subtitle: Center(
+                    child: Center(
+                      child: Text(
+                        'Good Morning',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: Colors.white54),
+                      ),
+                    ),
+                  ),
+                  trailing: const CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage('- images/mainLogo.png'),
+                  ),
+                )
+              ],
+            ),
+          )
         ],
-      ),
-    );
-  }
-}
-
-class FormExample extends StatefulWidget {
-  const FormExample({super.key});
-
-  @override
-  State<FormExample> createState() => _FormExampleState();
-}
-
-class _FormExampleState extends State<FormExample> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 300.0,
-        height: 160.0,
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TextFormField(
-                decoration: const InputDecoration(
-                    hintText: 'Enter via mobile number',
-                    icon: Icon(Icons.phone_iphone),
-                    iconColor: Colors.black54),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter mobile number';
-                  }
-                  return null;
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Validate will return true if the form is valid, or false if
-                    // the form is invalid.
-                    if (_formKey.currentState!.validate()) {
-                      // Process data.
-                    }
-                  },
-                  child: const Center(child: Text('Get OTP')),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
