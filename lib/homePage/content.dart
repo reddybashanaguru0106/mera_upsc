@@ -23,14 +23,9 @@ class MyDashboardBody extends StatelessWidget{
                     color: Colors.white70,
       width: 5,
     ),
-  
-    //     ,BoxShadow ,BoxShadow(
-    //      {Color color: const Color(0xFF000000),
-    //       Offset offset: Offset.zero,
-    //       double blurRadius: 0.0,
-    //       double spreadRadius: 0.0}
-    //  )
-                   ),
+    
+     ),
+    //  child:Center(child: const Text("ganesh",style: TextStyle(fontSize: 20),),),
                   
                 ),
                 Container(
