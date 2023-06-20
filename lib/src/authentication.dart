@@ -21,25 +21,15 @@ class AuthFunc extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        //TO DO: Add App Logo
         Padding(
           padding: const EdgeInsets.only(left: 24, bottom: 8),
           child: StyledButton(
               onPressed: () {
-                !loggedIn ? context.push('/sign-in') : signOut();
+                context.push('/sign-in');
               },
-              child: !loggedIn ? const Text('RSVP') : const Text('Logout')),
+              child: !loggedIn ? Text('Get Started') : Text('Logout')),
         ),
-        Visibility(
-          visible: loggedIn,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 24, bottom: 8),
-            child: StyledButton(
-                onPressed: () {
-                  context.push('/profile');
-                },
-                child: const Text('Profile')),
-          ),
-        )
       ],
     );
   }

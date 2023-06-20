@@ -2,16 +2,19 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mera_upsc/app.dart';
 import 'package:provider/provider.dart';
 
 import 'app_state.dart';
 import 'home_page.dart';
+// import 'homePage/screen.dart';
+// import 'package:mera_upsc/footer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(ChangeNotifierProvider(
     create: (context) => ApplicationState(),
-    builder: ((context, build) => const App()),
+    builder: ((context, build) => const AppMain()),
   ));
   // return runApp(const App());
 }
@@ -56,7 +59,7 @@ final _router = GoRouter(
                             'Please check your email to verify your email address'));
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
-                  context.pushReplacement('/');
+                  context.pushReplacement('/home');
                 })),
               ],
             );
@@ -89,21 +92,27 @@ final _router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: '/home',
+      builder: (context, state) {
+        return const MyApp();
+      },
+    ),
   ],
 );
 // end of GoRouter configuration
 
-class App extends StatelessWidget {
-  const App({super.key});
+class AppMain extends StatelessWidget {
+  const AppMain({super.key});
 
   @override
   Widget build(BuildContext context) {
     // Change MaterialApp to MaterialApp.router and add the routerConfig
     return MaterialApp.router(
-      title: 'Firebase Meetup',
+      title: 'Mera UPSC',
       theme: ThemeData(
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
-              highlightColor: Colors.deepPurple,
+              highlightColor: Colors.pinkAccent,
             ),
         primarySwatch: Colors.deepPurple,
         textTheme: GoogleFonts.robotoTextTheme(
