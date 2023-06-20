@@ -15,73 +15,130 @@ class MyMainSubjects extends StatelessWidget {
       children: <Widget>[
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text("He'd have you all unravel at the"),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: const Color.fromARGB(255, 177, 221, 241),
+          // child: const Text("He'd have you all unravel at the"),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Heed not the rabble'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Heed not the rabble'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Sound of screams but the'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Sound of screams but the'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Who scream'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Who scream'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution is coming...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution is coming...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
         Container(
           padding: const EdgeInsets.all(8),
-          color: Colors.black87,
-          child: const Text('Revolution, they...'),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color.fromARGB(255, 247, 227, 227),
+              border: Border.all(color: Colors.black38)),
+          // color: Colors.lightBlue,
+          // child: const Text('Revolution, they...'),
         ),
       ],
     );

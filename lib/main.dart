@@ -76,7 +76,7 @@ class _BottomNavigationBarExampleState
             },
           ),
         ],
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.pinkAccent,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -87,20 +87,20 @@ class _BottomNavigationBarExampleState
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.pink,
+            backgroundColor: Colors.pinkAccent,
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.book),
               label: 'Test',
-              backgroundColor: Colors.pink),
+              backgroundColor: Colors.pinkAccent),
           BottomNavigationBarItem(
               icon: Icon(Icons.newspaper),
               label: 'CurentAffairs',
-              backgroundColor: Colors.pink),
+              backgroundColor: Colors.pinkAccent),
           BottomNavigationBarItem(
               icon: Icon(Icons.leaderboard),
               label: 'leaderboard',
-              backgroundColor: Colors.pink),
+              backgroundColor: Colors.pinkAccent),
         ],
         currentIndex: _selectedIndex,
         // selectedItemColor: Colors.white,

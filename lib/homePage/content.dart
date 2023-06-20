@@ -25,7 +25,7 @@ class MyDashboardBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: const Color.fromARGB(255, 247, 227, 227),
-                        border: Border.all(color: Colors.white70)),
+                        border: Border.all(color: Colors.black38)),
                     // child: Image.asset(
                     //   '././images/sampleProfile.png',
                     //   scale: 100,
@@ -37,7 +37,7 @@ class MyDashboardBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: const Color.fromARGB(255, 247, 227, 227),
-                        border: Border.all(color: Colors.white70)),
+                        border: Border.all(color: Colors.black38)),
                     // child: Image.asset('././images/sampleProfile.png'),
                     // color: Colors.blue,
                   ),
@@ -47,7 +47,7 @@ class MyDashboardBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: const Color.fromARGB(255, 247, 227, 227),
-                        border: Border.all(color: Colors.white70)),
+                        border: Border.all(color: Colors.black38)),
                     // color: Colors.green,
                     // child: Image.asset('././images/sampleProfile.png'),
                   ),
@@ -57,7 +57,7 @@ class MyDashboardBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: const Color.fromARGB(255, 247, 227, 227),
-                        border: Border.all(color: Colors.white70)),
+                        border: Border.all(color: Colors.black38)),
                     // color: Colors.yellow,
                     // child: Image.asset('././images/sampleProfile.png'),
                   ),
@@ -67,7 +67,7 @@ class MyDashboardBody extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: const Color.fromARGB(255, 247, 227, 227),
-                        border: Border.all(color: Colors.white70)),
+                        border: Border.all(color: Colors.black38)),
                     // color: Colors.orange,
                     // child: Image.asset('././images/sampleProfile.png'),
                   ),
