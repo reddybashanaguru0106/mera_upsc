@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'navbar.dart';
+import 'drawer.dart';
 import 'homePage/content.dart';
 import 'testPage/content.dart';
 
@@ -71,36 +71,75 @@ class _BottomNavigationBarExampleState
             },
           ),
         ],
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: const Color.fromARGB(179, 31, 78, 231),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.pinkAccent,
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.book),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(179, 123, 117, 117),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black87,
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white70,
+          selectedItemColor: Colors.black87,
+          unselectedItemColor: Colors.black87,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+                color: Colors.black87,
+              ),
+              label: 'Home',
+              activeIcon: Icon(
+                Icons.home_filled,
+                color: Colors.black87,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.book_outlined,
+                color: Colors.black87,
+              ),
               label: 'Test',
-              backgroundColor: Colors.pinkAccent),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.newspaper),
+              activeIcon: Icon(
+                Icons.book,
+                color: Colors.black87,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.photo_album_outlined,
+                color: Colors.black87,
+              ),
               label: 'CurentAffairs',
-              backgroundColor: Colors.pinkAccent),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.leaderboard),
+              activeIcon: Icon(
+                Icons.photo_album,
+                color: Colors.black87,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.leaderboard_outlined,
+                color: Colors.black87,
+              ),
               label: 'leaderboard',
-              backgroundColor: Colors.pinkAccent),
-        ],
-        currentIndex: _selectedIndex,
-        // selectedItemColor: Colors.white,
-        onTap: _onItemTapped,
-        showUnselectedLabels: true,
+              activeIcon: Icon(
+                Icons.leaderboard,
+                color: Colors.black87,
+              ),
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          showUnselectedLabels: true,
+        ),
       ),
     );
   }

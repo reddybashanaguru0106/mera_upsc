@@ -23,15 +23,14 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final color = Theme.of(context).colorScheme.primary;
-
+    // final appState = Provider.of<ApplicationState>(context);
     return Drawer(
       child: ListView(padding: EdgeInsets.zero, children: <Widget>[
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(20),
           // color: Theme.of(context).primaryColor,
-          decoration: const BoxDecoration(color: Colors.pink),
+          decoration: const BoxDecoration(color: Colors.white70),
           child: Center(
               child: Column(
             children: <Widget>[
@@ -54,14 +53,14 @@ class NavBar extends StatelessWidget {
                 'S.Ganesh',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white70,
+                  color: Colors.black87,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const Text(
                 'sampathiganesh0106@gmail.com',
                 style: TextStyle(
-                    color: Colors.white70, fontWeight: FontWeight.bold),
+                    color: Colors.black87, fontWeight: FontWeight.bold),
               ),
             ],
           )),
@@ -76,16 +75,13 @@ class NavBar extends StatelessWidget {
           leading: Icon(Icons.settings),
           title: Text('Settings'),
         ),
-        const ListTile(
-          leading: Icon(Icons.logout_outlined),
-          title: Text('Logout'),
-        ),
         Consumer<ApplicationState>(
             builder: (context, appState, _) => AuthFunc(
-                loggedIn: appState.loggedIn,
-                signOut: () {
-                  FirebaseAuth.instance.signOut();
-                })),
+                  loggedIn: appState.loggedIn,
+                  signOut: () async {
+                    await FirebaseAuth.instance.signOut();
+                  },
+                )),
       ]),
     );
   }
@@ -96,15 +92,11 @@ class NavBar extends StatelessWidget {
     return ClipOval(
       child: Material(
         color: Colors.transparent,
-        child:
-            // Image.asset('images/sampleProfile.png', fit:BoxFit.fill)
-            // Image(image:AssetImage('images/sampleProfile.png'))
-            Ink.image(
+        child: Ink.image(
           image: image,
           fit: BoxFit.cover,
           width: 128,
           height: 128,
-          // child: InkWell(onTap: onClicked),
         ),
       ),
     );

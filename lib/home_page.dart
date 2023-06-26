@@ -18,9 +18,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          // const SizedBox(height: 80),
-          // const IconAndDetail(Icons.calendar_today, 'October 30'),
-          // const IconAndDetail(Icons.location_city, 'San Francisco'),
           Consumer<ApplicationState>(
               builder: (context, appState, _) => AuthFunc(
                   loggedIn: appState.loggedIn,
