@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'src/widgets.dart';
-import 'app_state.dart';
+// import 'app_state.dart';
 import 'guest_book_message.dart';
 
 class GuestBook extends StatefulWidget {
@@ -56,8 +56,8 @@ class _GuestBookState extends State<GuestBook> {
                       _controller.clear();
                     }
                   },
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children: [
                       Icon(Icons.send),
                       SizedBox(width: 4),
                       Text('SEND'),
