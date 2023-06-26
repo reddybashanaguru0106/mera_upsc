@@ -27,9 +27,6 @@ class MyTestDetails extends StatelessWidget {
                   child: Container(
                     width: 450,
                     height: 100,
-                    // decoration:
-                    //     BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                    // color: Colors.white70,
                     margin: const EdgeInsets.all(8),
                     child: Card(
                       child: Padding(
@@ -78,10 +75,6 @@ class MyTestDetails extends StatelessWidget {
               }),
         ));
   }
-  // height: 200,
-  // width: 200,
-  // padding: const EdgeInsets.all(10),
-  // child: const Text('I am the body text'),
 }
 
 class TestPage {

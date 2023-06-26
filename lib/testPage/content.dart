@@ -8,8 +8,6 @@ class MyTestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // height: 100,
-      // width: 450,
       child: ListView.builder(
           scrollDirection: Axis.vertical,
           itemCount: myTests.length,
@@ -26,9 +24,6 @@ class MyTestPage extends StatelessWidget {
               child: Container(
                 width: 450,
                 height: 100,
-                // decoration:
-                //     BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                // color: Colors.white70,
                 margin: const EdgeInsets.all(8),
                 child: Card(
                   child: Padding(
