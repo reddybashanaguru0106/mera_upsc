@@ -82,6 +82,7 @@ flutter:
   assets:
    - images/appLogo.png
    - images/sampleProfile.png
+   - images/TestLogo.png
    - images/group.png
    
 
