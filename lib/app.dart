@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'drawer.dart';
 import 'homePage/content.dart';
 import 'testPage/content.dart';
+import 'whatsHappening/main.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: BottomNavigationBarExample(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -31,8 +33,8 @@ class _BottomNavigationBarExampleState
   static const List<Widget> _widgetOptions = <Widget>[
     MyDashboardBody(),
     MyTestPage(),
-    MyDashboardBody(),
-    MyTestPage(),
+    WhatsHappeningMain(),
+    // MyTestPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -118,23 +120,23 @@ class _BottomNavigationBarExampleState
                 Icons.photo_album_outlined,
                 color: Colors.black87,
               ),
-              label: 'CurentAffairs',
+              label: "What's Happening!",
               activeIcon: Icon(
                 Icons.photo_album,
                 color: Colors.black87,
               ),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.leaderboard_outlined,
-                color: Colors.black87,
-              ),
-              label: 'leaderboard',
-              activeIcon: Icon(
-                Icons.leaderboard,
-                color: Colors.black87,
-              ),
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(
+            //     Icons.leaderboard_outlined,
+            //     color: Colors.black87,
+            //   ),
+            //   label: 'leaderboard',
+            //   activeIcon: Icon(
+            //     Icons.leaderboard,
+            //     color: Colors.black87,
+            //   ),
+            // ),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,

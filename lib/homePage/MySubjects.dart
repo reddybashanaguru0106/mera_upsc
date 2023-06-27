@@ -18,15 +18,18 @@ class _MysubjectsState extends State<Mysubjects> {
       stream: FirebaseFirestore.instance.collection('subjects').snapshots(),
       builder: (context, snapshots) {
         final loadedSubjects = snapshots.data!.docs;
+        final mainSubjects = loadedSubjects
+            .where((element) => element['subjectType'] == 'main')
+            .toList();
         return GridView.builder(
           scrollDirection: Axis.horizontal,
           primary: false,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
           ),
-          itemCount: loadedSubjects.isEmpty ? 0 : loadedSubjects.length,
+          itemCount: mainSubjects.isEmpty ? 0 : mainSubjects.length,
           itemBuilder: (BuildContext context, int index) {
-            final subject = loadedSubjects[index].data();
+            final subject = mainSubjects[index].data();
             return HorizontalPlaceItem(subject: subject);
           },
         );
