@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:mera_upsc/whatsHappening/helper/index.dart';
 
-class MySportsTab extends StatefulWidget {
-  const MySportsTab({super.key});
+class MyNewsTab extends StatefulWidget {
+  final String category;
+
+  const MyNewsTab({super.key, required this.category});
 
   @override
-  State<MySportsTab> createState() => _MySportsTabState();
+  State<MyNewsTab> createState() => _MySportsTabState();
 }
 
-class _MySportsTabState extends State<MySportsTab> {
+class _MySportsTabState extends State<MyNewsTab> {
   final ScrollController _scrollController = ScrollController();
   List<Article> _articles = [];
-  final _currentCategory = 'sports';
+  // final _currentCategory = 'sports';
   bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
-    // _loadArticles();
+    _loadArticles();
   }
 
   Future<void> _loadArticles() async {
@@ -26,7 +28,7 @@ class _MySportsTabState extends State<MySportsTab> {
     });
 
     try {
-      final articles = await fetchNewsArticles(category: _currentCategory);
+      final articles = await fetchNewsArticles(category: widget.category);
       setState(() {
         _articles = articles;
       });

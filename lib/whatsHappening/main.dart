@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mera_upsc/app.dart';
 import 'widgets/sports.dart';
+// import 'package:flutter_icons/flutter_icons.dart';
 
 class WhatsHappeningMain extends StatefulWidget {
   const WhatsHappeningMain({super.key});
@@ -25,7 +27,46 @@ class _MainState extends State<WhatsHappeningMain> {
                 tabs: [
                   Tab(
                     icon: Icon(
-                      Icons.sports_soccer,
+                      Icons.desktop_windows_outlined,
+                      color: Colors.black87,
+                    ),
+                    child: Text(
+                      'Technology',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.business_outlined,
+                      color: Colors.black87,
+                    ),
+                    child: Text(
+                      'Business',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.science_outlined,
+                      color: Colors.black87,
+                    ),
+                    child: Text(
+                      'Science',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.sports_soccer_outlined,
                       color: Colors.black87,
                     ),
                     child: Text(
@@ -37,24 +78,57 @@ class _MainState extends State<WhatsHappeningMain> {
                     ),
                   ),
                   Tab(
-                      icon: Icon(
-                    Icons.directions_transit,
-                    color: Colors.black87,
-                  )),
+                    icon: Icon(
+                      Icons.newspaper_outlined,
+                      color: Colors.black87,
+                    ),
+                    child: Text(
+                      'General',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
                   Tab(
-                      icon: Icon(
-                    Icons.directions_bike,
-                    color: Colors.black87,
-                  )),
+                    icon: Icon(
+                      Icons.health_and_safety_outlined,
+                      color: Colors.black87,
+                    ),
+                    child: Text(
+                      'Health',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    icon: Icon(
+                      Icons.movie_outlined,
+                      color: Colors.black87,
+                    ),
+                    child: Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
                 ],
               ),
               // title: const Text('Tabs Demo'),
             ),
             body: const TabBarView(
               children: [
-                MySportsTab(),
-                Icon(Icons.directions_transit),
-                Icon(Icons.directions_bike),
+                MyNewsTab(category: 'technology'),
+                MyNewsTab(category: 'business'),
+                MyNewsTab(category: 'science'),
+                MyNewsTab(category: 'sports'),
+                MyNewsTab(category: 'general'),
+                MyNewsTab(category: 'health'),
+                MyNewsTab(category: 'entertainment'),
               ],
             ),
           ),

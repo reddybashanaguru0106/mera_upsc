@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'MySubjects.dart';
+import 'mySubjects.dart';
 
 import 'MyOptSubjects.dart';
 import 'cf.dart';
@@ -19,25 +19,22 @@ class MyDashboardBody extends StatelessWidget {
           children: [
             // Image.asset(''),
             Expanded(
+              flex: 1,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: const <Widget>[
-                  CurrentAffairsScreen(),
-                  SizedBox(
-                    width: 10,
-                  ),
+                  HoriontalListViewWithDotIndicator(),
                 ],
               ),
             ),
-
-            const SizedBox(
-              height: 400,
+            const Expanded(
+              flex: 2,
               child: Mysubjects(),
             ),
-            const SizedBox(
-              height: 200,
+            const Expanded(
+              flex: 1,
               child: MyOptSubjects(),
-            ),
+            )
           ],
         ));
   }

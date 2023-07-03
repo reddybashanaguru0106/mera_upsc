@@ -19,10 +19,6 @@ Future<List<Article>> fetchNewsArticles({String category = 'sports'}) async {
 
   if (response.statusCode == 200) {
     final jsonData = json.decode(response.body);
-    // jsonData['articles'].forEach((item) {
-    //   if (item['title'] != null &&
-    //       item['urlToImage'] != null &&
-    //       item['description'] != null) {
     final articles = jsonData['articles'] as List<dynamic>;
     final validArticles = articles.where((el) {
       return el['title'] != null &&
@@ -32,8 +28,6 @@ Future<List<Article>> fetchNewsArticles({String category = 'sports'}) async {
     return validArticles
         .map((articleJson) => Article.fromJson(articleJson))
         .toList();
-    // }
-    // });
   } else {
     throw Exception('Failed to fetch news articles');
   }
