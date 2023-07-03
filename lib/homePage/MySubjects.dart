@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mera_upsc/app.dart';
 import 'subjects_detail.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Mysubjects extends StatefulWidget {
   const Mysubjects({Key? key}) : super(key: key);
@@ -18,15 +20,18 @@ class _MysubjectsState extends State<Mysubjects> {
       stream: FirebaseFirestore.instance.collection('subjects').snapshots(),
       builder: (context, snapshots) {
         final loadedSubjects = snapshots.data!.docs;
+        final mainSubjects = loadedSubjects
+            .where((element) => element['subjectType'] == 'main')
+            .toList();
         return GridView.builder(
           scrollDirection: Axis.horizontal,
           primary: false,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
           ),
-          itemCount: loadedSubjects.isEmpty ? 0 : loadedSubjects.length,
+          itemCount: mainSubjects.isEmpty ? 0 : mainSubjects.length,
           itemBuilder: (BuildContext context, int index) {
-            final subject = loadedSubjects[index].data();
+            final subject = mainSubjects[index].data();
             return HorizontalPlaceItem(subject: subject);
           },
         );
@@ -42,50 +47,55 @@ class HorizontalPlaceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20.0),
+    return Card(
+      elevation: 0,
       child: InkWell(
         child: SizedBox(
-          height: 450.0,
+          height: 250.0,
           width: 140.0,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
+            textDirection: TextDirection.ltr,
             children: <Widget>[
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    "images/appLogo.png",
-                    height: 60.0,
-                    width: 80.0,
-                    fit: BoxFit.cover,
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    getIconData(subject['iconName']),
+                    color: darkBlue,
+                    size: 48.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
                   ),
-                ),
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    alignment: Alignment.topLeft,
+                    child: Badge(
+                      backgroundColor: Colors.orangeAccent,
+                      label: Text("Paper Type: ${subject["paperType"]}"),
+                      // child: const Icon(Icons.card_giftcard),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 7.0),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "${subject["title"]}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
-                  ),
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                ),
+              const Divider(
+                thickness: 0.5,
+                color: darkBlue,
               ),
-              const SizedBox(height: 3.0),
               Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Paper Type: ${subject["paperType"]}",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13.0,
-                    color: Colors.blueGrey[300],
+                alignment: Alignment.topLeft,
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "${subject["title"]}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.0,
+                    ),
+                    maxLines: 3,
+                    textAlign: TextAlign.start,
                   ),
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
                 ),
               ),
             ],
@@ -101,5 +111,25 @@ class HorizontalPlaceItem extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+IconData getIconData(String? iconName) {
+  switch (iconName) {
+    case 'monument':
+      return FontAwesomeIcons.monument;
+    case 'globe':
+      return FontAwesomeIcons.globe;
+    case 'map':
+      return FontAwesomeIcons.map;
+    case 'Cloud with Sun and Rain':
+      return FontAwesomeIcons.cloudSunRain;
+    case 'Microscope':
+      return FontAwesomeIcons.microscope;
+    case 'bookOpen':
+      return FontAwesomeIcons.bookOpen;
+    // Add more cases as needed for additional icon names
+    default:
+      return Icons.subject;
   }
 }
