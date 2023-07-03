@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'drawer.dart';
 import 'homePage/content.dart';
 import 'testPage/content.dart';
+import 'whatsHappening/main.dart';
+
+const Color darkBlue = Color(0xFF12202F);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: BottomNavigationBarExample(),
+    return MaterialApp(
+      home: const BottomNavigationBarExample(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.robotoTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              color: darkBlue,
+              width: 0.2,
+            ),
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+        ),
+        // useMaterial3: true,
+      ),
     );
   }
 }
@@ -31,8 +51,8 @@ class _BottomNavigationBarExampleState
   static const List<Widget> _widgetOptions = <Widget>[
     MyDashboardBody(),
     MyTestPage(),
-    MyDashboardBody(),
-    MyTestPage(),
+    WhatsHappeningMain(),
+    // MyTestPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -49,6 +69,7 @@ class _BottomNavigationBarExampleState
       ),
       appBar: AppBar(
         title: const Center(child: Text('MERA UPSC')),
+        backgroundColor: darkBlue,
         toolbarHeight: 50,
         leading: Builder(
           builder: (BuildContext context) {
@@ -71,7 +92,7 @@ class _BottomNavigationBarExampleState
             },
           ),
         ],
-        backgroundColor: const Color.fromARGB(179, 31, 78, 231),
+        // backgroundColor: const Color.fromARGB(179, 31, 78, 231),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -85,60 +106,71 @@ class _BottomNavigationBarExampleState
             ),
           ],
         ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white70,
-          selectedItemColor: Colors.black87,
-          unselectedItemColor: Colors.black87,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-                color: Colors.black87,
-              ),
-              label: 'Home',
-              activeIcon: Icon(
-                Icons.home_filled,
-                color: Colors.black87,
-              ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Divider(
+              color: Colors.white,
+              height: 0.5,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.book_outlined,
-                color: Colors.black87,
-              ),
-              label: 'Test',
-              activeIcon: Icon(
-                Icons.book,
-                color: Colors.black87,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.photo_album_outlined,
-                color: Colors.black87,
-              ),
-              label: 'CurentAffairs',
-              activeIcon: Icon(
-                Icons.photo_album,
-                color: Colors.black87,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.leaderboard_outlined,
-                color: Colors.black87,
-              ),
-              label: 'leaderboard',
-              activeIcon: Icon(
-                Icons.leaderboard,
-                color: Colors.black87,
-              ),
+            BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.white,
+              selectedItemColor: Colors.black87,
+              unselectedItemColor: Colors.black87,
+              elevation: 8.0,
+              landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home_outlined,
+                    color: Colors.black87,
+                  ),
+                  label: 'Home',
+                  activeIcon: Icon(
+                    Icons.home_filled,
+                    color: Colors.black87,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.book_outlined,
+                    color: Colors.black87,
+                  ),
+                  label: 'Test',
+                  activeIcon: Icon(
+                    Icons.book,
+                    color: Colors.black87,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.photo_album_outlined,
+                    color: Colors.black87,
+                  ),
+                  label: "What's Happening!",
+                  activeIcon: Icon(
+                    Icons.photo_album,
+                    color: Colors.black87,
+                  ),
+                ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(
+                //     Icons.leaderboard_outlined,
+                //     color: Colors.black87,
+                //   ),
+                //   label: 'leaderboard',
+                //   activeIcon: Icon(
+                //     Icons.leaderboard,
+                //     color: Colors.black87,
+                //   ),
+                // ),
+              ],
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              showUnselectedLabels: true,
             ),
           ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          showUnselectedLabels: true,
         ),
       ),
     );
