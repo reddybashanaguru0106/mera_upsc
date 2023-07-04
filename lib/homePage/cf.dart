@@ -107,6 +107,7 @@ class _HoriontalListViewWithDotIndicatorState
                   width: 380,
                   margin: const EdgeInsets.all(8.0),
                   child: Card(
+                    color: const Color.fromARGB(255, 165, 221, 247),
                     elevation: 2.0,
                     shadowColor: Colors.black,
                     child: Padding(
