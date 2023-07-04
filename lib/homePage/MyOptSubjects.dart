@@ -2,6 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mera_upsc/homePage/cf.dart';
 import 'optionaldetails.dart';
+import 'dart:math' as math;
+
+Color generateDarkishColor() {
+  const brightnessThreshold = 0.5; // Adjust this value to control the darkness
+  const contrastThreshold = 4.5; // Adjust this value to control the contrast
+
+  while (true) {
+    final color =
+        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+
+    // Calculate the perceived brightness of the color
+    final perceivedBrightness = color.computeLuminance();
+
+    // Calculate the contrast ratio between the color and white
+    final contrastRatio = (perceivedBrightness + 0.05) / 0.05;
+
+    if (perceivedBrightness < brightnessThreshold &&
+        contrastRatio >= contrastThreshold) {
+      return color;
+    }
+  }
+}
 
 class MyOptSubjects extends StatelessWidget {
   const MyOptSubjects({super.key});
@@ -43,8 +65,8 @@ class HorizontalPlaceItem extends StatelessWidget {
       elevation: 0,
       child: InkWell(
         child: SizedBox(
-          height: 250.0,
-          width: 140.0,
+          height: 145.0,
+          width: 170.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
@@ -56,15 +78,17 @@ class HorizontalPlaceItem extends StatelessWidget {
                   const Icon(
                     Icons.subject,
                     color: darkBlue,
-                    size: 48.0,
+                    size: 45.0,
                     semanticLabel: 'Text to announce in accessibility modes',
                   ),
                   Container(
                     padding: const EdgeInsets.all(0),
                     alignment: Alignment.topLeft,
-                    child: const Badge(
-                      backgroundColor: Colors.orangeAccent,
-                      label: Text("optionalsubjects"),
+                    child: Badge(
+                      backgroundColor: generateDarkishColor(),
+                      label: Text("Paper Type: ${subject["paperType"]}"),
+                      // backgroundColor: Colors.orangeAccent,
+                      // label: Text("Paper Type: ${subject["paperType"]}"),
                       // child: const Icon(Icons.card_giftcard),
                     ),
                   ),
@@ -77,7 +101,7 @@ class HorizontalPlaceItem extends StatelessWidget {
               const SizedBox(height: 7.0),
               Container(
                 alignment: Alignment.topLeft,
-                height: 80,
+                height: 70,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
