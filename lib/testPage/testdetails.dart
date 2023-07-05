@@ -148,4 +148,22 @@ List<TestPage> myTests = [
       date: 'Time=00:00',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Indian Geography',
+      description: 'Topics',
+      date: 'Time=00:00',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Indian Geography',
+      description: 'Topics',
+      date: 'Time=00:00',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Indian Geography',
+      description: 'Topics',
+      date: 'Time=00:00',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
 ];

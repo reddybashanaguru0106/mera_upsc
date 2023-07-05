@@ -5,9 +5,12 @@
 import 'package:firebase_auth/firebase_auth.dart'
     hide EmailAuthProvider, PhoneAuthProvider;
 import 'package:flutter/material.dart';
+// import 'package:mera_upsc/app.dart';
 import 'package:provider/provider.dart';
 import 'app_state.dart';
 import 'src/authentication.dart';
+
+const Color darkBlue = Color(0xFF12202F);
 
 class NavBar extends StatelessWidget {
   final String imagePath;
@@ -25,6 +28,7 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     // final appState = Provider.of<ApplicationState>(context);
     return Drawer(
+      backgroundColor: darkBlue,
       child: ListView(padding: EdgeInsets.zero, children: <Widget>[
         Container(
           width: double.infinity,
@@ -68,8 +72,8 @@ class NavBar extends StatelessWidget {
         const ListTile(
           leading: Icon(Icons.person_2_outlined),
           title: Text('Profile'),
-          selectedColor: Colors.amber,
-          selectedTileColor: Colors.amber,
+          selectedColor: Colors.white70,
+          selectedTileColor: Colors.white70,
         ),
         const ListTile(
           leading: Icon(Icons.settings),

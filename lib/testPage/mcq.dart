@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyQuestions extends StatefulWidget {
-  const MyQuestions({Key? key}) : super(key: key);
+  const MyQuestions({super.key});
 
   @override
-  _MyQuestionsState createState() => _MyQuestionsState();
+  State<MyQuestions> createState() => _MyQuestionsState();
 }
 
 class _MyQuestionsState extends State<MyQuestions> {
@@ -12,21 +12,21 @@ class _MyQuestionsState extends State<MyQuestions> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          AppBar(
-            title: const Text('TEST-1          time:00:00'),
-          ),
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('TEST-1'),
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: questions.length,
               itemBuilder: (context, index) {
                 final question = questions[index];
                 return Container(
-                  width: 300,
-                  height: 280,
                   margin: const EdgeInsets.all(8),
                   child: Card(
                     elevation: 5.0,
@@ -43,9 +43,11 @@ class _MyQuestionsState extends State<MyQuestions> {
                               fontSize: 18,
                             ),
                           ),
-                          const SizedBox(),
+                          const SizedBox(height: 8),
                           RadioListTile<int>(
                             title: Text(question.option1),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
                             value: 1,
                             groupValue: selectedOption,
                             onChanged: (value) {
@@ -56,6 +58,8 @@ class _MyQuestionsState extends State<MyQuestions> {
                           ),
                           RadioListTile<int>(
                             title: Text(question.option2),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
                             value: 2,
                             groupValue: selectedOption,
                             onChanged: (value) {
@@ -66,6 +70,8 @@ class _MyQuestionsState extends State<MyQuestions> {
                           ),
                           RadioListTile<int>(
                             title: Text(question.option3),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
                             value: 3,
                             groupValue: selectedOption,
                             onChanged: (value) {
@@ -76,6 +82,8 @@ class _MyQuestionsState extends State<MyQuestions> {
                           ),
                           RadioListTile<int>(
                             title: Text(question.option4),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
                             value: 4,
                             groupValue: selectedOption,
                             onChanged: (value) {
@@ -91,8 +99,12 @@ class _MyQuestionsState extends State<MyQuestions> {
                 );
               },
             ),
-          ),
-        ],
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Submit'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -117,7 +129,7 @@ class MyQuestion {
 List<MyQuestion> questions = [
   MyQuestion(
     title:
-        '1.Who among the following was the founder of the Indian National Congress?',
+        '1. Who among the following was the founder of the Indian National Congress?',
     option1: 'a) Mahatma Gandhi',
     option2: 'b) Jawaharlal Nehru',
     option3: 'c) A.O. Hume',
@@ -131,27 +143,63 @@ List<MyQuestion> questions = [
     option4: 'd) 1942',
   ),
   MyQuestion(
-    title:
-        '3.which of the following ministary has launched,catch the rain 2023 campaign?',
-    option1: 'a)ministary of jal shakti',
-    option2: 'b)ministary of rural development',
-    option3: 'c)ministary of panchayathi raj',
-    option4: 'd)ministary of carporator affiars',
+    title: '3.Who is known as the "Father of the Indian Constitution"?',
+    option1: 'a) Jawaharlal Nehru',
+    option2: 'b) B.R. Ambedkar',
+    option3: 'c) Rajendra Prasad',
+    option4: 'd) Sardar Vallabhbhai Patel',
   ),
   MyQuestion(
     title:
-        '4.Wellington Reef sometimes seen in the news recently,is located in?',
-    option1: 'a)Papua New Guinea',
-    option2: 'b)Ecuador',
-    option3: 'c)Australia',
-    option4: 'd)New Nealand',
+        '4.The Indus Valley Civilization was primarily spread across which modern-day countries?',
+    option1: 'a) India and Pakistan',
+    option2: 'b) India and Bangladesh',
+    option3: 'c) India and Nepal',
+    option4: 'd) India and Sri Lanka',
+  ),
+  MyQuestion(
+    title: '5.The Maurya Empire was established by which emperor?',
+    option1: 'a) Chandragupta Maurya',
+    option2: 'b) Ashoka the Great',
+    option3: 'c) Bindusara',
+    option4: 'd) Samudragupta',
+  ),
+  MyQuestion(
+    title: '6.The Battle of Plassey took place in which year?',
+    option1: 'a) 1757',
+    option2: 'b) 1857',
+    option3: 'c) 1761',
+    option4: 'd) 1856',
   ),
   MyQuestion(
     title:
-        '5.Which of the following planets of the solar system has the longest dat',
-    option1: 'a)Mercury',
-    option2: 'b)Jupiter',
-    option3: 'c)Venus',
-    option4: 'd)Earth',
+        '7.Who was the leader of the revolt of 1857, also known as the First War of Independence?',
+    option1: 'a) Rani Lakshmibai',
+    option2: 'b) Bahadur Shah Zafar',
+    option3: 'c) Mangal Pandey',
+    option4: 'd) Tatya Tope',
+  ),
+  MyQuestion(
+    title:
+        '8.Who was the first woman President of the Indian National Congress?',
+    option1: 'a) Annie Besant',
+    option2: 'b) Sarojini Naidu',
+    option3: 'c) Vijaya Lakshmi Pandit',
+    option4: 'd) Indira Gandhi',
+  ),
+  MyQuestion(
+    title: '9.The Swadeshi movement was launched in response to which event?',
+    option1: 'a) Jallianwala Bagh massacre',
+    option2: 'b) Partition of Bengal',
+    option3: 'c) Non-Cooperation Movement',
+    option4: 'd) Salt March',
+  ),
+  MyQuestion(
+    title:
+        '10.Who was the first Indian woman to become the Prime Minister of India?',
+    option1: 'a) Sarojini Naidu',
+    option2: 'b) Indira Gandhi',
+    option3: 'c) Pratibha Patil',
+    option4: 'd) Sonia Gandhi',
   ),
 ];
