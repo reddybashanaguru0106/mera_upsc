@@ -20,7 +20,7 @@ class MyTestDetails extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const NewPage(),
+                        builder: (context) => const MyQuestions(),
                       ),
                     );
                   },
@@ -62,7 +62,7 @@ class MyTestDetails extends StatelessWidget {
                                   ]),
                             ),
                             const SizedBox(
-                              height: 140,
+                              // height: 140,
                               width: 100,
                               child: Icon(Icons.navigate_next_sharp),
                             )

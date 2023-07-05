@@ -23,7 +23,7 @@ class MyTestPage extends StatelessWidget {
               },
               child: Container(
                 width: 450,
-                height: 100,
+                height: 140,
                 margin: const EdgeInsets.all(8),
                 child: Card(
                   child: Padding(
@@ -31,8 +31,8 @@ class MyTestPage extends StatelessWidget {
                     child: Row(
                       children: [
                         SizedBox(
-                            height: 140,
-                            width: 80,
+                            height: 100,
+                            width: 60,
                             child: Image.asset(myTests[index].image)),
                         SizedBox(
                           width: 150,
@@ -98,49 +98,73 @@ List<TestPage> myTests = [
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian Polity',
+      title: 'indian National Movemen',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian Geography',
+      title: 'Indian Geography ',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian History',
+      title: 'Indian Polity and Governance',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian Polity',
+      title: ' Social Development',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian Geography',
+      title: 'General issues on Environmental ecology, ',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian History',
+      title: 'General Science',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian Polity',
+      title: 'Comprehension',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
       testIcon: 'navigate_next_sharp'),
   TestPage(
-      title: 'Indian Geography',
+      title: 'Interpersonal skills including communication skills',
+      description: 'No.of tests Avaialble=20',
+      date: 'Test Attempted=2/20',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Logical reasoning and analytical ability',
+      description: 'No.of tests Avaialble=20',
+      date: 'Test Attempted=2/20',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Decision making and problem solving',
+      description: 'No.of tests Avaialble=20',
+      date: 'Test Attempted=2/20',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'General mental ability',
+      description: 'No.of tests Avaialble=20',
+      date: 'Test Attempted=2/20',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Basic numeracy',
       description: 'No.of tests Avaialble=20',
       date: 'Test Attempted=2/20',
       image: 'images/appLogo.png',
