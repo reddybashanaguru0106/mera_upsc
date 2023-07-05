@@ -4,11 +4,7 @@ import 'package:mera_upsc/homePage/cf.dart';
 import 'optionaldetails.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 import 'dart:math' as math;
-
-
-
 
 Color generateDarkishColor() {
   const brightnessThreshold = 0.5; // Adjust this value to control the darkness
@@ -71,8 +67,8 @@ class HorizontalPlaceItem extends StatelessWidget {
       elevation: 0,
       child: InkWell(
         child: SizedBox(
-          height: 100.0,
-          width: 140.0,
+          height: 145.0,
+          width: 170.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
@@ -81,10 +77,10 @@ class HorizontalPlaceItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                   Icon(
+                  Icon(
                     getIconData(subject['iconName']),
                     color: darkBlue,
-                    size:40.0,
+                    size: 45.0,
                     semanticLabel: 'Text to announce in accessibility modes',
                   ),
                   Container(
@@ -107,7 +103,7 @@ class HorizontalPlaceItem extends StatelessWidget {
               const SizedBox(height: 7.0),
               Container(
                 alignment: Alignment.topLeft,
-                height: 50,
+                height: 70,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -136,70 +132,67 @@ class HorizontalPlaceItem extends StatelessWidget {
     );
   }
 }
+
 IconData getIconData(String? iconName) {
   switch (iconName) {
     case 'leaf':
       return FontAwesomeIcons.leaf;
-      case 'Veterinary Symbol':
+    case 'Veterinary Symbol':
       return FontAwesomeIcons.paw;
-      case 'globe':
+    case 'globe':
       return FontAwesomeIcons.globe;
-       case 'seedling':
+    case 'seedling':
       return FontAwesomeIcons.seedling;
-      case 'book':
+    case 'book':
       return FontAwesomeIcons.book;
-      case 'calculator':
+    case 'calculator':
       return FontAwesomeIcons.calculator;
-      case 'flask':
+    case 'flask':
       return FontAwesomeIcons.flask;
-       case 'balance-scale':
+    case 'balance-scale':
       return FontAwesomeIcons.dollarSign;
-       case 'money-bill':
+    case 'money-bill':
       return FontAwesomeIcons.moneyBills;
-       case 'Map Icon':
+    case 'Map Icon':
       return FontAwesomeIcons.map;
-      case 'mountain':
+    case 'mountain':
       return FontAwesomeIcons.mountain;
-       case 'museum':
+    case 'museum':
       return FontAwesomeIcons.buildingColumns;
-      case 'sitemap':
+    case 'sitemap':
       return FontAwesomeIcons.sitemap;
-         // ignore: unreachable_switch_case
-         case 'chartline':
+    // ignore: unreachable_switch_case
+    case 'chartline':
       return FontAwesomeIcons.chartLine;
-          case 'hospital':
+    case 'hospital':
       return FontAwesomeIcons.hospital;
-         case 'brain':
+    case 'brain':
       return FontAwesomeIcons.brain;
-        case 'landmark':
+    case 'landmark':
       return FontAwesomeIcons.landmark;
-       case 'microscope':
+    case 'microscope':
       return FontAwesomeIcons.microscope;
-      case 'flag':
+    case 'flag':
       return FontAwesomeIcons.flag;
-      // ignore: unreachable_switch_case
-      case 'brain':
+    // ignore: unreachable_switch_case
+    case 'brain':
       return FontAwesomeIcons.brain;
-      case 'clipboard':
+    case 'clipboard':
       return FontAwesomeIcons.clipboard;
-       case 'peoplearrows':
+    case 'peoplearrows':
       return FontAwesomeIcons.peopleArrows;
-      case 'database':
+    case 'database':
       return FontAwesomeIcons.database;
-      case 'bug':
+    case 'bug':
       return FontAwesomeIcons.bug;
-       case 'pen':
+    case 'pen':
       return FontAwesomeIcons.pen;
-      case 'Law Book':
+    case 'Law Book':
       return FontAwesomeIcons.book;
-       case ' Gears':
+    case ' Gears':
       return FontAwesomeIcons.gears;
 
-
-        
-
-
-          // Add more cases as needed for additional icon names
+    // Add more cases as needed for additional icon names
     default:
       return Icons.subject;
   }

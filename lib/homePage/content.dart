@@ -29,12 +29,69 @@ class MyDashboardBody extends StatelessWidget {
             ),
             const Expanded(
               flex: 2,
-              child: Mysubjects(),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(8.0, 0, 0, 2.0),
+                          child: Text(
+                            'Subjects',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Icon(Icons.arrow_forward_outlined)
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: Mysubjects(),
+                  )
+                ],
+              ),
             ),
             const Expanded(
-              flex: 1,
-              child: MyOptSubjects(),
-            )
+                flex: 1,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8.0, 0, 0, 2.0),
+                            child: Text(
+                              'OPT-Subjects',
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                          Icon(Icons.arrow_forward_outlined)
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: MyOptSubjects(),
+                    )
+                  ],
+                )
+                // MyOptSubjects(),
+                )
           ],
         ));
   }
