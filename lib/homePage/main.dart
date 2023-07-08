@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'mySubjects.dart';
+import './widgets/my_subjects.dart';
 
 import 'widgets/my_opt_subjects.dart';
 import 'widgets/card_carousel.dart';
