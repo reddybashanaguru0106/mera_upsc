@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mera_upsc/app.dart';
-import 'subjects_detail.dart';
+import './my_chapters.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color generateDarkishColor() {
@@ -134,7 +134,7 @@ class HorizontalPlaceItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const SubjectsDetail(),
+              builder: (context) => MyChapters(subject: subject),
             ),
           );
         },
@@ -174,41 +174,3 @@ IconData getIconData(String? iconName) {
       return Icons.subject;
   }
 }
-
-// getbadgecolor(String? randomcolor) {
-//   switch (randomcolor) {
-//     case '0':
-//       return const Color.fromARGB(255, 37, 108, 39);
-//     case '1':
-//       return const Color.fromARGB(255, 164, 230, 89);
-//     case '2':
-//       return const Color.fromARGB(255, 211, 5, 74);
-//     case '3':
-//       return const Color.fromARGB(255, 242, 227, 95);
-//     case '4':
-//       return const Color.fromARGB(255, 7, 24, 32);
-//     case '5':
-//       return const Color.fromARGB(255, 0, 0, 0);
-//     case '6':
-//       return const Color.fromARGB(255, 135, 9, 157);
-//     case '7':
-//       return const Color.fromARGB(255, 211, 210, 210);
-//     case '8':
-//       return const Color.fromARGB(255, 2, 91, 164);
-//     case '9':
-//       return const Color.fromARGB(255, 225, 128, 121);
-//     case '10':
-//       return const Color.fromARGB(255, 193, 8, 70);
-
-//     // Add more cases as needed for additional icon names
-//     default:
-//       return Colors.orange;
-//   }
-// }
-// Function to generate a random color (example)
-// String getRandomColor() {
-//   final List<String> colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-//   final random = Random();
-//   final randomIndex = random.nextInt(colors.length);
-//   return colors[randomIndex];
-// }

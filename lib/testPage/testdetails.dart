@@ -20,7 +20,7 @@ class MyTestDetails extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const NewPage(),
+                        builder: (context) => const MyQuestions(),
                       ),
                     );
                   },
@@ -62,7 +62,7 @@ class MyTestDetails extends StatelessWidget {
                                   ]),
                             ),
                             const SizedBox(
-                              height: 140,
+                              // height: 140,
                               width: 100,
                               child: Icon(Icons.navigate_next_sharp),
                             )
@@ -138,6 +138,24 @@ List<TestPage> myTests = [
       testIcon: 'navigate_next_sharp'),
   TestPage(
       title: 'Indian Polity',
+      description: 'Topics',
+      date: 'Time=00:00',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Indian Geography',
+      description: 'Topics',
+      date: 'Time=00:00',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Indian Geography',
+      description: 'Topics',
+      date: 'Time=00:00',
+      image: 'images/appLogo.png',
+      testIcon: 'navigate_next_sharp'),
+  TestPage(
+      title: 'Indian Geography',
       description: 'Topics',
       date: 'Time=00:00',
       image: 'images/appLogo.png',
