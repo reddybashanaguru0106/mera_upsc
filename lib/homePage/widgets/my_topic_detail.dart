@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 const Color darkBlue = Color(0xFF12202F);
 
-class HistoryPage extends StatelessWidget {
+class MyTopicDetail extends StatelessWidget {
+  const MyTopicDetail({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'chapterDetails.dart';
+import 'my_topics.dart';
 
-class SubjectsDetail extends StatelessWidget {
-  const SubjectsDetail({super.key});
+class MyChapters extends StatelessWidget {
+  final subject;
+  const MyChapters({super.key, required this.subject});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +23,15 @@ class SubjectsDetail extends StatelessWidget {
           thickness: 5,
           child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: mychapter.length,
+              itemCount: subject['chapters']?.length,
               itemBuilder: (BuildContext context, int index) {
+                final chapter = subject['chapters'][index];
                 return InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MyChapterDetails(),
+                        builder: (context) => MyTopics(chapter: chapter),
                       ),
                     );
                   },
@@ -37,7 +39,7 @@ class SubjectsDetail extends StatelessWidget {
                     width: 300,
                     height: 100,
                     margin: const EdgeInsets.all(0),
-                    color: Color.fromARGB(179, 243, 253, 253),
+                    color: const Color.fromARGB(179, 243, 253, 253),
                     child: Card(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
@@ -61,7 +63,7 @@ class SubjectsDetail extends StatelessWidget {
                                         padding:
                                             EdgeInsets.fromLTRB(0, 10, 0, 0)),
                                     Text(
-                                      mychapter[index].title,
+                                      chapter['title'],
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20),
@@ -70,7 +72,7 @@ class SubjectsDetail extends StatelessWidget {
                                     Column(
                                       children: [
                                         Text(
-                                          mychapter[index].description,
+                                          chapter['description'],
                                           style: const TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 16,
@@ -78,21 +80,6 @@ class SubjectsDetail extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(height: 8),
-                                    Column(
-                                      children: [
-                                        Column(
-                                          children: [
-                                            Text(
-                                              mychapter[index].date,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w300,
-                                                  fontSize: 14),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    )
                                   ]),
                             ),
                             Transform.scale(
@@ -113,99 +100,14 @@ class SubjectsDetail extends StatelessWidget {
   }
 }
 
-class MyChapters {
+class MyChapter {
   final String title;
   final String description;
-  final String date;
   final String icon;
-  final String testIcon;
 
-  MyChapters({
+  MyChapter({
     required this.title,
     required this.description,
-    required this.date,
     required this.icon,
-    required this.testIcon,
   });
 }
-
-List<MyChapters> mychapter = [
-  MyChapters(
-      title: 'Chapter-1',
-      description: 'No.of Topics-5',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter-2',
-      description: 'No.of Topics-7',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter-3',
-      description: 'No.of Topics-8',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter-4',
-      description: 'No.of Topics-9',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-6',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-88',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-4',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-3',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-9',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-8',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-7',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-5',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-  MyChapters(
-      title: 'Chapter',
-      description: 'No.of Topics-8',
-      date: 'Marks',
-      icon: 'receipt_long',
-      testIcon: 'navigate_next_sharp'),
-];

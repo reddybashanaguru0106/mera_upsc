@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'drawer.dart';
-import 'homePage/content.dart';
+import 'homePage/main.dart';
 import 'testPage/content.dart';
 import 'whatsHappening/main.dart';
 

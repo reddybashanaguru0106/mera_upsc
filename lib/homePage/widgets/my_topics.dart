@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mera_upsc/homePage/summery.dart';
+import 'package:mera_upsc/homePage/widgets/my_topic_detail.dart';
 
 const Color darkBlue = Color(0xFF12202F);
 
-class MyChapterDetails extends StatelessWidget {
-  const MyChapterDetails({Key? key});
+class MyTopics extends StatelessWidget {
+  final chapter;
+  const MyTopics({super.key, required this.chapter});
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +33,15 @@ class MyChapterDetails extends StatelessWidget {
           child: Scrollbar(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: chapters.length,
+              itemCount: chapter['topics'].length,
               itemBuilder: (BuildContext context, int index) {
+                final topic = chapter['topics'][index];
                 return InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HistoryPage(),
+                        builder: (context) => const MyTopicDetail(),
                       ),
                     );
                   },
@@ -68,7 +70,7 @@ class MyChapterDetails extends StatelessWidget {
                           SizedBox(
                             width: 280,
                             child: Text(
-                              chapters[index].description,
+                              topic['description'],
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -98,30 +100,12 @@ class MyChapterDetails extends StatelessWidget {
   }
 }
 
-class MyChapters {
+class MyTopic {
   final String icon;
   final String description;
 
-  MyChapters({
+  MyTopic({
     required this.icon,
     required this.description,
   });
 }
-
-List<MyChapters> chapters = [
-  MyChapters(icon: '1.', description: 'Topic-1'),
-  MyChapters(icon: '2.', description: 'Topic-2'),
-  MyChapters(icon: '3.', description: 'Topic-3'),
-  MyChapters(icon: '4.', description: 'Topic-4'),
-  MyChapters(icon: '5.', description: 'Topic-5'),
-  MyChapters(icon: '6.', description: 'Topic-6'),
-  MyChapters(icon: '7.', description: 'Topic-7'),
-  MyChapters(icon: '8.', description: 'Topic-8'),
-  MyChapters(icon: '9.', description: 'Topic-9'),
-  MyChapters(icon: '10.', description: 'Topic-10'),
-  MyChapters(icon: '11.', description: 'Topic-11'),
-  MyChapters(icon: '12.', description: 'Topic-12'),
-  MyChapters(icon: '13.', description: 'Topic-13'),
-  MyChapters(icon: '14.', description: 'Topic-14'),
-  MyChapters(icon: '15.', description: 'Topic-15'),
-];
