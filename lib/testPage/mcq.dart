@@ -27,76 +27,78 @@ class _MyQuestionsState extends State<MyQuestions> {
               itemBuilder: (context, index) {
                 final question = questions[index];
                 return Container(
-                  margin: const EdgeInsets.all(8),
-                  child: Card(
-                    elevation: 5.0,
-                    shadowColor: Colors.blueGrey,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 0, 5, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            question.title,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    margin: const EdgeInsets.all(8),
+                    child: Expanded(
+                      child: Card(
+                        elevation: 5.0,
+                        shadowColor: Colors.blueGrey,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(30, 0, 5, 0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                question.title,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              RadioListTile<int>(
+                                title: Text(question.option1),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(16, 0, 8, 0),
+                                value: 1,
+                                groupValue: selectedOption,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedOption = value;
+                                  });
+                                },
+                              ),
+                              RadioListTile<int>(
+                                title: Text(question.option2),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(16, 0, 8, 0),
+                                value: 2,
+                                groupValue: selectedOption,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedOption = value;
+                                  });
+                                },
+                              ),
+                              RadioListTile<int>(
+                                title: Text(question.option3),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(16, 0, 8, 0),
+                                value: 3,
+                                groupValue: selectedOption,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedOption = value;
+                                  });
+                                },
+                              ),
+                              RadioListTile<int>(
+                                title: Text(question.option4),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(16, 0, 8, 0),
+                                value: 4,
+                                groupValue: selectedOption,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedOption = value;
+                                  });
+                                },
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 8),
-                          RadioListTile<int>(
-                            title: Text(question.option1),
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
-                            value: 1,
-                            groupValue: selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedOption = value;
-                              });
-                            },
-                          ),
-                          RadioListTile<int>(
-                            title: Text(question.option2),
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
-                            value: 2,
-                            groupValue: selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedOption = value;
-                              });
-                            },
-                          ),
-                          RadioListTile<int>(
-                            title: Text(question.option3),
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
-                            value: 3,
-                            groupValue: selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedOption = value;
-                              });
-                            },
-                          ),
-                          RadioListTile<int>(
-                            title: Text(question.option4),
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(16, 0, 8, 0),
-                            value: 4,
-                            groupValue: selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                selectedOption = value;
-                              });
-                            },
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                );
+                    ));
               },
             ),
             ElevatedButton(
