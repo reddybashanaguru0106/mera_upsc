@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mera_upsc/homePage/widgets/card_carousel.dart';
+// import 'package:mera_upsc/homePage/widgets/card_carousel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
 
 import 'package:mera_upsc/homePage/widgets/my_chapters.dart';
+
+const Color darkBlue = Color(0xFF12202F);
 
 Color generateDarkishColor() {
   const brightnessThreshold = 0.5; // Adjust this value to control the darkness
@@ -75,7 +77,7 @@ class HorizontalPlaceItem extends StatelessWidget {
             children: <Widget>[
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(
                     getIconData(subject['iconName']),
