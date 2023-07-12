@@ -1,8 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mera_upsc/homePage/cf.dart';
-import 'optionaldetails.dart';
-import 'dart:math' as math;
+// import 'package:mera_upsc/app.dart';
+import './my_chapters.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+const Color darkBlue = Color(0xFF12202F);
 
 Color generateDarkishColor() {
   const brightnessThreshold = 0.5; // Adjust this value to control the darkness
@@ -25,8 +29,15 @@ Color generateDarkishColor() {
   }
 }
 
-class MyOptSubjects extends StatelessWidget {
-  const MyOptSubjects({super.key});
+class Mysubjects extends StatefulWidget {
+  const Mysubjects({Key? key}) : super(key: key);
+
+  @override
+  State<Mysubjects> createState() => _MysubjectsState();
+}
+
+class _MysubjectsState extends State<Mysubjects> {
+  var subjects = [];
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +45,8 @@ class MyOptSubjects extends StatelessWidget {
       stream: FirebaseFirestore.instance.collection('subjects').snapshots(),
       builder: (context, snapshots) {
         final loadedSubjects = snapshots.data!.docs;
-        final optionalSubjects = loadedSubjects
-            .where((element) => element['subjectType'] == 'optional')
+        final mainSubjects = loadedSubjects
+            .where((element) => element['subjectType'] == 'main')
             .toList();
         return GridView.builder(
           scrollDirection: Axis.horizontal,
@@ -43,10 +54,10 @@ class MyOptSubjects extends StatelessWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
           ),
-          itemCount: optionalSubjects.isEmpty ? 0 : optionalSubjects.length,
+          itemCount: mainSubjects.isEmpty ? 0 : mainSubjects.length,
           itemBuilder: (BuildContext context, int index) {
-            final subject = optionalSubjects[index].data();
-            return HorizontalPlaceItem(subject: subject);
+            final subject = mainSubjects[index].data();
+            return HorizontalPlaceItem(subject: subject, index: index);
           },
         );
       },
@@ -56,29 +67,33 @@ class MyOptSubjects extends StatelessWidget {
 
 class HorizontalPlaceItem extends StatelessWidget {
   final Map subject;
+  final int index;
 
-  const HorizontalPlaceItem({super.key, required this.subject});
+  const HorizontalPlaceItem(
+      {super.key, required this.subject, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white70,
+      // shadowColor: Colors.deepOrange,
       elevation: 0,
       child: InkWell(
         child: SizedBox(
           height: 145.0,
           width: 170.0,
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             textDirection: TextDirection.ltr,
             children: <Widget>[
               Row(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(
-                    Icons.subject,
+                  Icon(
+                    getIconData(subject['iconName']),
                     color: darkBlue,
-                    size: 45.0,
+                    size: 40.0,
                     semanticLabel: 'Text to announce in accessibility modes',
                   ),
                   Container(
@@ -98,23 +113,22 @@ class HorizontalPlaceItem extends StatelessWidget {
                 thickness: 0.5,
                 color: darkBlue,
               ),
-              const SizedBox(height: 7.0),
               Container(
                 alignment: Alignment.topLeft,
-                height: 70,
+                height: 80,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "${subject["title"]}",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
+                      fontSize: 14.0,
                     ),
                     maxLines: 3,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -122,11 +136,43 @@ class HorizontalPlaceItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const OptionalDetails(),
+              builder: (context) => MyChapters(subject: subject),
             ),
           );
         },
       ),
     );
+  }
+}
+
+IconData getIconData(String? iconName) {
+  switch (iconName) {
+    case 'monument':
+      return FontAwesomeIcons.monument;
+    case 'globe':
+      return FontAwesomeIcons.globe;
+    case 'landmark':
+      return FontAwesomeIcons.landmark;
+    case 'map':
+      return FontAwesomeIcons.map;
+    case 'Cloud with Sun and Rain':
+      return FontAwesomeIcons.cloudSunRain;
+    case 'Microscope':
+      return FontAwesomeIcons.microscope;
+    case 'bookOpen':
+      return FontAwesomeIcons.bookOpen;
+    case 'handshake':
+      return FontAwesomeIcons.handshake;
+    case 'puzzle-piece':
+      return FontAwesomeIcons.puzzlePiece;
+    case 'exchangeAlt':
+      return FontAwesomeIcons.rightLeft;
+    case 'lightbulb':
+      return FontAwesomeIcons.lightbulb;
+    case 'calculator':
+      return FontAwesomeIcons.calculator;
+    // Add more cases as needed for additional icon names
+    default:
+      return Icons.subject;
   }
 }

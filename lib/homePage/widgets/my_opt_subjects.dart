@@ -1,10 +1,12 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mera_upsc/app.dart';
-import 'subjects_detail.dart';
+// import 'package:mera_upsc/homePage/widgets/card_carousel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:math' as math;
+
+import 'package:mera_upsc/homePage/widgets/my_chapters.dart';
+
+const Color darkBlue = Color(0xFF12202F);
 
 Color generateDarkishColor() {
   const brightnessThreshold = 0.5; // Adjust this value to control the darkness
@@ -27,15 +29,8 @@ Color generateDarkishColor() {
   }
 }
 
-class Mysubjects extends StatefulWidget {
-  const Mysubjects({Key? key}) : super(key: key);
-
-  @override
-  State<Mysubjects> createState() => _MysubjectsState();
-}
-
-class _MysubjectsState extends State<Mysubjects> {
-  var subjects = [];
+class MyOptSubjects extends StatelessWidget {
+  const MyOptSubjects({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +38,8 @@ class _MysubjectsState extends State<Mysubjects> {
       stream: FirebaseFirestore.instance.collection('subjects').snapshots(),
       builder: (context, snapshots) {
         final loadedSubjects = snapshots.data!.docs;
-        final mainSubjects = loadedSubjects
-            .where((element) => element['subjectType'] == 'main')
+        final optionalSubjects = loadedSubjects
+            .where((element) => element['subjectType'] == 'optional')
             .toList();
         return GridView.builder(
           scrollDirection: Axis.horizontal,
@@ -52,10 +47,10 @@ class _MysubjectsState extends State<Mysubjects> {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
           ),
-          itemCount: mainSubjects.isEmpty ? 0 : mainSubjects.length,
+          itemCount: optionalSubjects.isEmpty ? 0 : optionalSubjects.length,
           itemBuilder: (BuildContext context, int index) {
-            final subject = mainSubjects[index].data();
-            return HorizontalPlaceItem(subject: subject, index: index);
+            final subject = optionalSubjects[index].data();
+            return HorizontalPlaceItem(subject: subject);
           },
         );
       },
@@ -65,23 +60,19 @@ class _MysubjectsState extends State<Mysubjects> {
 
 class HorizontalPlaceItem extends StatelessWidget {
   final Map subject;
-  final int index;
 
-  const HorizontalPlaceItem(
-      {super.key, required this.subject, required this.index});
+  const HorizontalPlaceItem({super.key, required this.subject});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white70,
-      // shadowColor: Colors.deepOrange,
       elevation: 0,
       child: InkWell(
         child: SizedBox(
           height: 145.0,
           width: 170.0,
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
             children: <Widget>[
               Row(
@@ -91,7 +82,7 @@ class HorizontalPlaceItem extends StatelessWidget {
                   Icon(
                     getIconData(subject['iconName']),
                     color: darkBlue,
-                    size: 40.0,
+                    size: 45.0,
                     semanticLabel: 'Text to announce in accessibility modes',
                   ),
                   Container(
@@ -111,22 +102,23 @@ class HorizontalPlaceItem extends StatelessWidget {
                 thickness: 0.5,
                 color: darkBlue,
               ),
+              const SizedBox(height: 7.0),
               Container(
                 alignment: Alignment.topLeft,
-                height: 80,
+                height: 70,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "${subject["title"]}",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
+                      fontSize: 15.0,
                     ),
                     maxLines: 3,
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -134,7 +126,7 @@ class HorizontalPlaceItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const SubjectsDetail(),
+              builder: (context) => MyChapters(subject: subject),
             ),
           );
         },
@@ -145,70 +137,65 @@ class HorizontalPlaceItem extends StatelessWidget {
 
 IconData getIconData(String? iconName) {
   switch (iconName) {
-    case 'monument':
-      return FontAwesomeIcons.monument;
+    case 'leaf':
+      return FontAwesomeIcons.leaf;
+    case 'Veterinary Symbol':
+      return FontAwesomeIcons.paw;
     case 'globe':
       return FontAwesomeIcons.globe;
-    case 'landmark':
-      return FontAwesomeIcons.landmark;
-    case 'map':
-      return FontAwesomeIcons.map;
-    case 'Cloud with Sun and Rain':
-      return FontAwesomeIcons.cloudSunRain;
-    case 'Microscope':
-      return FontAwesomeIcons.microscope;
-    case 'bookOpen':
-      return FontAwesomeIcons.bookOpen;
-    case 'handshake':
-      return FontAwesomeIcons.handshake;
-    case 'puzzle-piece':
-      return FontAwesomeIcons.puzzlePiece;
-    case 'exchangeAlt':
-      return FontAwesomeIcons.rightLeft;
-    case 'lightbulb':
-      return FontAwesomeIcons.lightbulb;
+    case 'seedling':
+      return FontAwesomeIcons.seedling;
+    case 'book':
+      return FontAwesomeIcons.book;
     case 'calculator':
       return FontAwesomeIcons.calculator;
+    case 'flask':
+      return FontAwesomeIcons.flask;
+    case 'balance-scale':
+      return FontAwesomeIcons.dollarSign;
+    case 'money-bill':
+      return FontAwesomeIcons.moneyBills;
+    case 'Map Icon':
+      return FontAwesomeIcons.map;
+    case 'mountain':
+      return FontAwesomeIcons.mountain;
+    case 'museum':
+      return FontAwesomeIcons.buildingColumns;
+    case 'sitemap':
+      return FontAwesomeIcons.sitemap;
+    // ignore: unreachable_switch_case
+    case 'chartline':
+      return FontAwesomeIcons.chartLine;
+    case 'hospital':
+      return FontAwesomeIcons.hospital;
+    case 'brain':
+      return FontAwesomeIcons.brain;
+    case 'landmark':
+      return FontAwesomeIcons.landmark;
+    case 'microscope':
+      return FontAwesomeIcons.microscope;
+    case 'flag':
+      return FontAwesomeIcons.flag;
+    // ignore: unreachable_switch_case
+    case 'brain':
+      return FontAwesomeIcons.brain;
+    case 'clipboard':
+      return FontAwesomeIcons.clipboard;
+    case 'peoplearrows':
+      return FontAwesomeIcons.peopleArrows;
+    case 'database':
+      return FontAwesomeIcons.database;
+    case 'bug':
+      return FontAwesomeIcons.bug;
+    case 'pen':
+      return FontAwesomeIcons.pen;
+    case 'Law Book':
+      return FontAwesomeIcons.book;
+    case ' Gears':
+      return FontAwesomeIcons.gears;
+
     // Add more cases as needed for additional icon names
     default:
       return Icons.subject;
   }
 }
-
-// getbadgecolor(String? randomcolor) {
-//   switch (randomcolor) {
-//     case '0':
-//       return const Color.fromARGB(255, 37, 108, 39);
-//     case '1':
-//       return const Color.fromARGB(255, 164, 230, 89);
-//     case '2':
-//       return const Color.fromARGB(255, 211, 5, 74);
-//     case '3':
-//       return const Color.fromARGB(255, 242, 227, 95);
-//     case '4':
-//       return const Color.fromARGB(255, 7, 24, 32);
-//     case '5':
-//       return const Color.fromARGB(255, 0, 0, 0);
-//     case '6':
-//       return const Color.fromARGB(255, 135, 9, 157);
-//     case '7':
-//       return const Color.fromARGB(255, 211, 210, 210);
-//     case '8':
-//       return const Color.fromARGB(255, 2, 91, 164);
-//     case '9':
-//       return const Color.fromARGB(255, 225, 128, 121);
-//     case '10':
-//       return const Color.fromARGB(255, 193, 8, 70);
-
-//     // Add more cases as needed for additional icon names
-//     default:
-//       return Colors.orange;
-//   }
-// }
-// Function to generate a random color (example)
-// String getRandomColor() {
-//   final List<String> colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-//   final random = Random();
-//   final randomIndex = random.nextInt(colors.length);
-//   return colors[randomIndex];
-// }
