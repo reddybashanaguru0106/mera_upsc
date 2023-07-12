@@ -4,7 +4,7 @@ import 'package:mera_upsc/homePage/summery.dart';
 const Color darkBlue = Color(0xFF12202F);
 
 class MyChapterDetails extends StatelessWidget {
-  const MyChapterDetails({Key? key});
+  const MyChapterDetails({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -41,7 +41,7 @@ class MyOptSubjects extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           primary: false,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1,
+            crossAxisCount: 2,
           ),
           itemCount: optionalSubjects.isEmpty ? 0 : optionalSubjects.length,
           itemBuilder: (BuildContext context, int index) {

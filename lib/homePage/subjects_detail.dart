@@ -37,7 +37,7 @@ class SubjectsDetail extends StatelessWidget {
                     width: 300,
                     height: 100,
                     margin: const EdgeInsets.all(0),
-                    color: Color.fromARGB(179, 243, 253, 253),
+                    color: const Color.fromARGB(179, 243, 253, 253),
                     child: Card(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
@@ -72,7 +72,7 @@ class SubjectsDetail extends StatelessWidget {
                                         Text(
                                           mychapter[index].description,
                                           style: const TextStyle(
-                                            fontWeight: FontWeight.w600,
+                                            fontWeight: FontWeight.w400,
                                             fontSize: 16,
                                           ),
                                         ),
@@ -86,7 +86,7 @@ class SubjectsDetail extends StatelessWidget {
                                             Text(
                                               mychapter[index].date,
                                               style: const TextStyle(
-                                                  fontWeight: FontWeight.w300,
+                                                  fontWeight: FontWeight.w100,
                                                   fontSize: 14),
                                             ),
                                           ],
