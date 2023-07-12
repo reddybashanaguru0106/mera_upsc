@@ -18,7 +18,7 @@ class _HoriontalListViewWithDotIndicatorState
       title:
           "Ukraine live briefing: Revolt calls into question Putin's grip on power and Wagner Group's future - The Washington Post",
       description:
-          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
+          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership,The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadershipThe rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
       date: 'July 1, 2023',
     ),
     CurrentAffair(
@@ -150,7 +150,7 @@ class _HoriontalListViewWithDotIndicatorState
                             style: const TextStyle(
                               fontSize: 15,
                             ),
-                            maxLines: 3,
+                            maxLines: 6,
                           ),
                           const SizedBox(height: 12),
                         ],

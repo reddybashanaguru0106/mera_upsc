@@ -19,7 +19,7 @@ class MyDashboardBody extends StatelessWidget {
           children: [
             // Image.asset(''),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: const <Widget>[
@@ -27,71 +27,130 @@ class MyDashboardBody extends StatelessWidget {
                 ],
               ),
             ),
-            const Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(8.0, 0, 0, 2.0),
-                          child: Text(
-                            'Subjects',
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+            Expanded(
+              flex: 4,
+              child: DefaultTabController(
+                length: 3,
+                child: Scaffold(
+                  appBar: AppBar(
+                    backgroundColor: Colors.white,
+                    toolbarHeight: 8,
+                    bottom: const TabBar(
+                        indicatorColor: Colors.black87,
+                        isScrollable: true,
+                        overlayColor: MaterialStatePropertyAll(Colors.black87),
+                        tabs: [
+                          Tab(
+                            icon: Icon(
+                              Icons.import_contacts,
+                              color: Colors.black87,
+                            ),
+                            child: Text(
+                              'Subjects',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
-                        ),
-                        Icon(Icons.arrow_forward_outlined)
-                      ],
-                    ),
+                          Tab(
+                            icon: Icon(
+                              Icons.public,
+                              color: Colors.black87,
+                            ),
+                            child: Text(
+                              'Optional subjects',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                          Tab(
+                            icon: Icon(
+                              Icons.leaderboard,
+                              color: Colors.black87,
+                            ),
+                            child: Text(
+                              'Dashboard',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ]),
+                    // title: const Text('Tabs Demo'),
                   ),
-                  Expanded(
-                    flex: 5,
-                    child: Mysubjects(),
-                  )
-                ],
+                  body: const TabBarView(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 0,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.fromLTRB(8.0, 0, 0, 2.0),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_outlined,
+                                    size: 30,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Mysubjects(),
+                            )
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                flex: 0,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_outlined,
+                                      size: 30,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 4,
+                                child: MyOptSubjects(),
+                              )
+                            ],
+                          ))
+                    ],
+                  ),
+                  // ),
+                ),
               ),
             ),
-            const Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8.0, 0, 0, 2.0),
-                            child: Text(
-                              'OPT-Subjects',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w900),
-                            ),
-                          ),
-                          Icon(Icons.arrow_forward_outlined)
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: MyOptSubjects(),
-                    )
-                  ],
-                )
-                // MyOptSubjects(),
-                )
           ],
         ));
   }
