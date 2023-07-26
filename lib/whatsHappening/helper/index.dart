@@ -2,16 +2,17 @@ import 'dart:convert';
 // import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<List<Article>> fetchNewsArticles({String category = 'sports'}) async {
+Future<List<Article>> fetchNewsArticles(
+    {String category = '', country = '', pageSize = '50'}) async {
   const apiKey =
       'b169d667a31849109b6e085c294cb87c'; // Replace with your actual API key
   final url = Uri.https('newsapi.org', '/v2/top-headlines', {
     'apiKey': apiKey,
-    'pageSize': '50',
+    'pageSize': pageSize,
     'language': 'en',
-    'category': category
+    'category': category,
+    // 'country': country,
   });
-
   // ignore: avoid_print
   print(url);
 
@@ -37,19 +38,20 @@ class Article {
   final String title;
   final String description;
   final String imageUrl;
+  final String publishedAt;
 
-  Article({
-    required this.title,
-    required this.description,
-    required this.imageUrl,
-  });
+  Article(
+      {required this.title,
+      required this.description,
+      required this.imageUrl,
+      required this.publishedAt});
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      title: json['title'] ?? "",
-      description: json['description'] ?? "",
-      imageUrl: json['urlToImage'] ?? "",
-    );
+        title: json['title'] ?? "",
+        description: json['description'] ?? "",
+        imageUrl: json['urlToImage'] ?? "",
+        publishedAt: json['publishedAt'] ?? "");
   }
 }
 

@@ -88,13 +88,16 @@ class HorizontalPlaceItem extends StatelessWidget {
             children: <Widget>[
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(
-                    getIconData(subject['iconName']),
-                    color: darkBlue,
-                    size: 40.0,
-                    semanticLabel: 'Text to announce in accessibility modes',
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      getIconData(subject['iconName']),
+                      color: darkBlue,
+                      size: 40.0,
+                      semanticLabel: 'Text to announce in accessibility modes',
+                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.all(0),

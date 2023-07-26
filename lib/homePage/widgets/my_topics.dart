@@ -34,7 +34,7 @@ class MyTopics extends StatelessWidget {
           ),
         ),
         body: SizedBox(
-          height: 500,
+          // height: 800,
           child: Scrollbar(
             child: topics.isNotEmpty
                 ? ListView.builder(
@@ -52,10 +52,10 @@ class MyTopics extends StatelessWidget {
                           );
                         },
                         child: Card(
-                          elevation: 4,
+                          elevation: 2,
                           child: Container(
-                            width: 450,
-                            height: 80,
+                            // width: 400,
+                            height: 50,
                             margin: const EdgeInsets.all(4),
                             padding: const EdgeInsets.fromLTRB(30, 0, 10, 0),
                             decoration: BoxDecoration(
@@ -64,41 +64,62 @@ class MyTopics extends StatelessWidget {
                             ),
                             child: Row(
                               children: [
-                                const SizedBox(
-                                  height: 50,
-                                  width: 10,
+                                // const SizedBox(
+                                //   height: 50,
+                                //   width: 10,
+                                //   child:
+                                const Expanded(
+                                  flex: 1,
                                   child: Icon(
                                     Icons.web_stories_outlined,
                                     color: Color.fromARGB(255, 114, 137, 156),
                                   ),
                                 ),
-                                const Spacer(),
-                                SizedBox(
-                                  width: 280,
-                                  height: 200,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "${topic['id']}. ${topic['title']}",
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.grey,
-                                        ),
-                                        // textAlign: TextAlign.left,
-                                        // textDirection: TextDirection.ltr,
-                                        maxLines: 3,
-                                      ),
-                                    ],
+                                // ),
+                                // const Spacer(
+                                //     // flex: 2,
+                                //     ),
+                                // SizedBox(
+                                //   width: 280,
+                                //   // height: 200,
+                                //   child: Column(
+                                //     crossAxisAlignment:
+                                //         CrossAxisAlignment.start,
+                                //     children: [
+                                //       Padding(
+                                // padding: const EdgeInsets.fromLTRB(
+                                //     0, 0, 0, 0),
+                                // child:
+                                Expanded(
+                                  flex: 4,
+                                  child: Text(
+                                    "${topic['id']}. ${topic['title'].toUpperCase()}",
+                                    style: const TextStyle(
+                                      fontSize: 16,
+
+                                      // overflow: TextOverflow.visible,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color.fromARGB(255, 5, 5, 5),
+                                    ),
+                                    maxLines: 2,
+                                    // textAlign: TextAlign.left,
+                                    // textDirection: TextDirection.ltr,
                                   ),
                                 ),
-                                Transform.scale(
-                                  scale: 1.5,
-                                  child: const Icon(
-                                    Icons.navigate_next_outlined,
-                                    color: Color.fromARGB(255, 216, 219, 220),
+                                //       ),
+                                //     ],
+                                //   ),
+                                // ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Transform.scale(
+                                    scale: 1.0,
+                                    child: const Icon(
+                                      Icons.navigate_next_outlined,
+                                      color: Color.fromARGB(255, 216, 219, 220),
+                                    ),
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),

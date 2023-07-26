@@ -28,7 +28,7 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     // final appState = Provider.of<ApplicationState>(context);
     return Drawer(
-      backgroundColor: darkBlue,
+      backgroundColor: Colors.white,
       child: ListView(padding: EdgeInsets.zero, children: <Widget>[
         Container(
           width: double.infinity,
@@ -39,7 +39,7 @@ class NavBar extends StatelessWidget {
               child: Column(
             children: <Widget>[
               Container(
-                // color: Colors.black87,
+                // color: Colors.white,
                 width: 100,
                 height: 100,
                 margin: const EdgeInsets.only(
@@ -69,15 +69,9 @@ class NavBar extends StatelessWidget {
             ],
           )),
         ),
-        const ListTile(
-          leading: Icon(Icons.person_2_outlined),
-          title: Text('Profile'),
-          selectedColor: Colors.white70,
-          selectedTileColor: Colors.white70,
-        ),
-        const ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
+        const Divider(
+          thickness: 0.5,
+          color: Colors.black,
         ),
         Consumer<ApplicationState>(
             builder: (context, appState, _) => AuthFunc(
@@ -95,7 +89,7 @@ class NavBar extends StatelessWidget {
 
     return ClipOval(
       child: Material(
-        color: Colors.transparent,
+        color: Colors.white,
         child: Ink.image(
           image: image,
           fit: BoxFit.cover,
