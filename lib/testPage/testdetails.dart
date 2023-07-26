@@ -16,14 +16,14 @@ class MyTestDetails extends StatelessWidget {
               itemCount: myTests.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MyQuestions(),
-                      ),
-                    );
-                  },
+                  // onTap: () {
+                  //   Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => const MyQuestions(),
+                  //     ),
+                  //   );
+                  // },
                   child: Container(
                     width: 450,
                     height: 100,

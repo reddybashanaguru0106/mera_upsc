@@ -19,7 +19,11 @@ class MyTopicDetail extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
             backgroundColor: darkBlue,
-            title: Center(child: Text(topic['title'])),
+            title: Center(
+              child: Text(
+                "${topic['id']}. ${topic['title'].toUpperCase()}",
+              ),
+            ),
             toolbarHeight: 60,
             leading: const Icon(
               Icons.web_stories_outlined,
@@ -32,14 +36,14 @@ class MyTopicDetail extends StatelessWidget {
             child: Scrollbar(
               child: ListView(
                 children: [
-                  Card(
+                  const Card(
                     color: saffron,
                     child: SizedBox(
                       height: 40,
                       child: Center(
                         child: Text(
-                          "${topic['id']} INTRODUCTION",
-                          style: const TextStyle(
+                          " INTRODUCTION",
+                          style: TextStyle(
                               fontWeight: FontWeight.w500, color: Colors.white),
                           textDirection: TextDirection.ltr,
                           textAlign: TextAlign.start,

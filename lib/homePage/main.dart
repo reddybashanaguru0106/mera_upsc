@@ -7,6 +7,8 @@ import 'widgets/card_carousel.dart';
 
 class MyDashboardBody extends StatelessWidget {
   const MyDashboardBody({super.key});
+  final country = 'in';
+  final query = 'upsc';
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,9 @@ class MyDashboardBody extends StatelessWidget {
               flex: 2,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const <Widget>[
-                  HoriontalListViewWithDotIndicator(),
+                children: <Widget>[
+                  HoriontalListViewWithDotIndicator(
+                      country: country, query: query),
                 ],
               ),
             ),
