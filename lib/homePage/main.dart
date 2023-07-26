@@ -4,6 +4,7 @@ import './widgets/my_subjects.dart';
 
 import 'widgets/my_opt_subjects.dart';
 import 'widgets/card_carousel.dart';
+import 'widgets/dash_board.dart';
 
 class MyDashboardBody extends StatelessWidget {
   const MyDashboardBody({super.key});
@@ -147,7 +148,37 @@ class MyDashboardBody extends StatelessWidget {
                                 child: MyOptSubjects(),
                               )
                             ],
-                          ))
+                          )),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 0,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+                                  ),
+                                  // Icon(
+                                  //   Icons.arrow_downward_rounded,
+                                  //   size: 10,
+                                  // ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: MyDashboard(),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                   // ),
