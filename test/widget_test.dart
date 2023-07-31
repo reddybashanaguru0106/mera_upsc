@@ -12,7 +12,11 @@ import 'package:mera_upsc/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
+<<<<<<< Updated upstream
     await tester.pumpWidget(const AppMain());
+=======
+    await tester.pumpWidget(AppBar());
+>>>>>>> Stashed changes
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

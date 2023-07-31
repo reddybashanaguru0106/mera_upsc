@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mera_upsc/src/create.dart';
+import 'package:mera_upsc/src/chapters.dart';
 
 import 'drawer.dart';
 import 'homePage/content.dart';
@@ -32,7 +34,8 @@ class _BottomNavigationBarExampleState
     MyDashboardBody(),
     MyTestPage(),
     MyDashboardBody(),
-    MyTestPage(),
+    // MyCreateScreen()
+    MyupdateScreen()
   ];
 
   void _onItemTapped(int index) {
