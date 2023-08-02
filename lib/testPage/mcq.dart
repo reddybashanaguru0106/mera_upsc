@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,46 +16,6 @@ class MyQuestions extends StatefulWidget {
 
 class _MyQuestionsState extends State<MyQuestions> {
   int? selectedOption;
-  // bool _isLoading = false;
-  // var _questions = [];
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
-
-  // Future<void> _loadQuestions() async {
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-
-  //   try {
-  //     final questions =
-  //         await getQuestionsBySubjectId(widget.subject['subjectId']);
-  //     setState(() {
-  //       _questions = questions;
-  //     });
-  //     print(questions);
-  //   } catch (e) {
-  //     showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //         title: const Text('Error'),
-  //         content: const Text('Failed to fetch news articles.'),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () => Navigator.pop(context),
-  //             child: const Text('OK'),
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   } finally {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +41,9 @@ class _MyQuestionsState extends State<MyQuestions> {
           final loadedQuestions = loadedQuestionData['questions'];
 
           final questions = loadedQuestions
-              .where((element) => element['subjectId'] == '1')
+              .where((element) => element['subjectId'] == widget.subject['id'])
               .toList();
+          // ignore: avoid_print
           print(questions);
           return Scaffold(
             appBar: AppBar(

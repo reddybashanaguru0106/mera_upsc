@@ -154,6 +154,7 @@ class _BottomNavigationBarExampleState
                     color: Colors.black87,
                   ),
                 ),
+
                 // BottomNavigationBarItem(
                 //   icon: Icon(
                 //     Icons.leaderboard_outlined,

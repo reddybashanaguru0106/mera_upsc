@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:mera_upsc/testPage/mcq.dart';
 import 'my_topics.dart';
@@ -67,19 +69,22 @@ class MyChapters extends StatelessWidget {
                         margin: const EdgeInsets.all(0),
                         color: const Color.fromARGB(179, 243, 253, 253),
                         child: Card(
+                          elevation: 2,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
                             child: Row(
                               children: [
-                                const SizedBox(
-                                  height: 200,
-                                  width: 10,
-                                  child: Icon(
-                                    Icons.receipt_long,
-                                    color: Color.fromARGB(255, 180, 193, 193),
-                                    size: 60,
-                                  ),
-                                ),
+                                const Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                      child: Icon(
+                                        Icons.receipt_long,
+                                        color:
+                                            Color.fromARGB(255, 180, 193, 193),
+                                        size: 60,
+                                      ),
+                                    )),
                                 const Spacer(),
                                 SizedBox(
                                   width: 250,

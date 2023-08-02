@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_field
+
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:mera_upsc/whatsHappening/helper/index.dart';
 import 'package:intl/intl.dart';
+import 'package:mera_upsc/whatsHappening/widgets/newsdetails.dart';
 
 // import 'package:mera_upsc/whatsHappening/main.dart';
 
@@ -124,58 +127,70 @@ class _HoriontalListViewWithDotIndicatorState
                   width: 380,
                   margin: const EdgeInsets.all(8.0),
                   child: Card(
-                    color: const Color.fromARGB(255, 165, 221, 247),
-                    elevation: 2.0,
-                    shadowColor: Colors.black,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      color: const Color.fromARGB(255, 165, 221, 247),
+                      elevation: 2.0,
+                      shadowColor: Colors.black,
+                      clipBehavior: Clip.hardEdge,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NewsDetails(article: article),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                flex: 1,
-                                child: Text(
-                                  article.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                    overflow: TextOverflow.clip,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      article.title,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        overflow: TextOverflow.clip,
+                                      ),
+                                      maxLines: 1,
+                                    ),
                                   ),
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  DateFormat('dd/MM/yyyy').format(
-                                      DateTime.parse(article.publishedAt)),
-                                  style: const TextStyle(
-                                    color: darkBlue,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      DateFormat('dd/mm/yy').format(
+                                        DateTime.parse(article.publishedAt),
+                                      ),
+                                      style: const TextStyle(
+                                        color: darkBlue,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.end,
+                                    ),
                                   ),
-                                  textAlign: TextAlign.end,
-                                ),
+                                ],
                               ),
+                              const SizedBox(height: 12),
+                              Text(
+                                article.description,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                                textAlign: TextAlign.justify,
+                              ),
+                              const SizedBox(height: 12),
                             ],
                           ),
-                          const SizedBox(height: 12),
-                          Text(
-                            article.description,
-                            style: const TextStyle(
-                              fontSize: 15,
-                            ),
-                            maxLines: 6,
-                            textAlign: TextAlign.justify,
-                          ),
-                          const SizedBox(height: 12),
-                        ],
-                      ),
-                    ),
-                  ),
+                        ),
+                      )),
                 );
               },
             ),
