@@ -28,13 +28,15 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     // final appState = Provider.of<ApplicationState>(context);
     return Drawer(
-      backgroundColor: darkBlue,
+      // backgroundColor: const Color.fromARGB(255, 165, 221, 247),
       child: ListView(padding: EdgeInsets.zero, children: <Widget>[
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(20),
           // color: Theme.of(context).primaryColor,
-          decoration: const BoxDecoration(color: Colors.white70),
+          decoration: const BoxDecoration(
+              // color: Color.fromARGB(255, 165, 221, 247),
+              ),
           child: Center(
               child: Column(
             children: <Widget>[
@@ -66,19 +68,23 @@ class NavBar extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.black87, fontWeight: FontWeight.bold),
               ),
+              const Divider(
+                thickness: 0.5,
+                color: Colors.black,
+              )
             ],
           )),
         ),
-        const ListTile(
-          leading: Icon(Icons.person_2_outlined),
-          title: Text('Profile'),
-          selectedColor: Colors.white70,
-          selectedTileColor: Colors.white70,
-        ),
-        const ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
-        ),
+        // const ListTile(
+        //   leading: Icon(Icons.person_2_outlined),
+        //   title: Text('Profile'),
+        //   selectedColor: Colors.white70,
+        //   selectedTileColor: Colors.white70,
+        // ),
+        // const ListTile(
+        //   leading: Icon(Icons.settings),
+        //   title: Text('Settings'),
+        // ),
         Consumer<ApplicationState>(
             builder: (context, appState, _) => AuthFunc(
                   loggedIn: appState.loggedIn,

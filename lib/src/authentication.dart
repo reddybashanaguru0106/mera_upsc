@@ -5,6 +5,7 @@
 // import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mera_upsc/app.dart';
 // import 'package:mera_upsc/app_state.dart';
 // import 'package:provider/provider.dart';
 // import '../main.dart';
@@ -43,19 +44,24 @@ class AuthFunc extends StatelessWidget {
                 child: ListView(
                   padding: EdgeInsets.zero,
                   children: [
-                    ListTile(
-                      leading: const Icon(Icons.logout_outlined),
-                      title: const Text('Logout'),
-                      onTap: () {
-                        final router = GoRouter.of(context);
-                        // ignore: avoid_print
-                        print(router);
-                        while (router.canPop()) {
-                          router.pop();
-                        }
-                        router.go('/sign-in');
-                        signOut(); // Navigate to the 'sign-in' route
-                      },
+                    Card(
+                      color: darkBlue,
+                      child: ListTile(
+                        leading: const Icon(Icons.logout_outlined),
+                        title: const Text(
+                          'Logout',
+                        ),
+                        onTap: () {
+                          final router = GoRouter.of(context);
+                          // ignore: avoid_print
+                          print(router);
+                          while (router.canPop()) {
+                            router.pop();
+                          }
+                          router.go('/sign-in');
+                          signOut(); // Navigate to the 'sign-in' route
+                        },
+                      ),
                     ),
                   ],
                 ),
