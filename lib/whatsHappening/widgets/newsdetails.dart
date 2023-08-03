@@ -1,8 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 const Color darkBlue = Color(0xFF12202F);
 
 class NewsDetails extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final article;
   const NewsDetails({super.key, required this.article});
 
@@ -28,13 +32,15 @@ class NewsDetails extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Text(
-                        //   article.publishedAt,
-                        //   style: const TextStyle(
-                        //     fontSize: 16,
-                        //     color: Color.fromARGB(255, 16, 1, 1),
-                        //   ),
-                        // ),
+                        Text(
+                          DateFormat('dd/mm/yy').format(
+                            DateTime.parse(article.publishedAt),
+                          ),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Color.fromARGB(255, 16, 1, 1),
+                          ),
+                        ),
                         Text(
                           article.title,
                           style: const TextStyle(

@@ -1,4 +1,5 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,13 +12,13 @@ import 'app_state.dart';
 // import 'homePage/screen.dart';
 // import 'package:mera_upsc/footer.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
     create: (context) => ApplicationState(),
     builder: ((context, build) => const AppMain()),
   ));
-  // return runApp(const App());
 }
 
 class AppMain extends StatelessWidget {

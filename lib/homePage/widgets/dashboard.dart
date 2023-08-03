@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -87,11 +89,23 @@ class _MyDashboardState extends State<MyDashboard> {
               Container(
                   padding: const EdgeInsets.all(15),
                   child: Table(
-                    border: TableBorder.all(
-                        width: 1, color: Colors.black45), //table border
+                    border: TableBorder.all(width: 1, color: Colors.grey),
+                    columnWidths: const <int, TableColumnWidth>{
+                      0: FlexColumnWidth(),
+                      1: FlexColumnWidth(),
+                      2: FlexColumnWidth(),
+                      3: FlexColumnWidth(),
+                    }, //table border
+                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                     children: const [
                       TableRow(children: [
-                        TableCell(child: Text("S/N")),
+                        TableCell(
+                          // verticalAlignment: TableCellVerticalAlignment.top,
+                          child: Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text("S/N"),
+                          ),
+                        ),
                         TableCell(child: Text("Name")),
                         TableCell(child: Text("Address")),
                         TableCell(child: Text("Nation"))

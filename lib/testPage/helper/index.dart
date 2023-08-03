@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
 // FirebaseFirestore.instance.collection('subjects').snapshots(),
 
@@ -24,6 +24,7 @@ Future<List<Map<String, dynamic>>> getQuestionsBySubjectId(
     return filteredQuestions;
   } catch (error) {
     // Handle any errors that occur during the fetch
+    // ignore: avoid_print
     print('Error fetching questions: $error');
     return [];
   }

@@ -10,6 +10,7 @@ class MyTopics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<dynamic> topics = chapter['topics'] as List<dynamic>;
+    // ignore: avoid_print
     print(topics);
     return MaterialApp(
       theme: ThemeData(
@@ -70,9 +71,12 @@ class MyTopics extends StatelessWidget {
                                 //   child:
                                 const Expanded(
                                   flex: 1,
-                                  child: Icon(
-                                    Icons.web_stories_outlined,
-                                    color: Color.fromARGB(255, 114, 137, 156),
+                                  child: Padding(
+                                    padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                    child: Icon(
+                                      Icons.web_stories_outlined,
+                                      color: Color.fromARGB(255, 114, 137, 156),
+                                    ),
                                   ),
                                 ),
                                 // ),
