@@ -196,7 +196,7 @@ class _HoriontalListViewWithDotIndicatorState
             ),
           ),
           DotsIndicator(
-            dotsCount: _articles.length,
+            dotsCount: _articles.isNotEmpty ? _articles.length : 1,
             position: _currentPageIndex.toInt(),
             decorator: decorator,
             onTap: (pos) {

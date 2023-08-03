@@ -4,7 +4,7 @@ import './widgets/my_subjects.dart';
 
 import 'widgets/my_opt_subjects.dart';
 import 'widgets/card_carousel.dart';
-import 'widgets/dash_board.dart';
+import 'widgets/dashboard.dart';
 
 class MyDashboardBody extends StatelessWidget {
   const MyDashboardBody({super.key});

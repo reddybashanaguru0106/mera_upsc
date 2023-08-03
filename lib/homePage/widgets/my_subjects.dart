@@ -44,6 +44,15 @@ class _MysubjectsState extends State<Mysubjects> {
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('subjects').snapshots(),
       builder: (context, snapshots) {
+        if (snapshots.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator(); // Show a loading indicator while waiting for data.
+        }
+
+        if (!snapshots.hasData) {
+          return const Text(
+              'No data found'); // Show a message if there is no data available.
+        }
+
         final loadedSubjects = snapshots.data!.docs;
         final mainSubjects = loadedSubjects
             .where((element) => element['subjectType'] == 'main')
