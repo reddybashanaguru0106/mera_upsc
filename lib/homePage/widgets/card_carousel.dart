@@ -1,10 +1,20 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_field
+
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:mera_upsc/whatsHappening/helper/index.dart';
+import 'package:intl/intl.dart';
+import 'package:mera_upsc/whatsHappening/widgets/newsdetails.dart';
+
+// import 'package:mera_upsc/whatsHappening/main.dart';
 
 const Color darkBlue = Color(0xFF12202F);
 
 class HoriontalListViewWithDotIndicator extends StatefulWidget {
-  const HoriontalListViewWithDotIndicator({Key? key}) : super(key: key);
+  final country;
+  final query;
+  const HoriontalListViewWithDotIndicator(
+      {super.key, required this.country, required this.query});
 
   @override
   State<HoriontalListViewWithDotIndicator> createState() =>
@@ -13,43 +23,8 @@ class HoriontalListViewWithDotIndicator extends StatefulWidget {
 
 class _HoriontalListViewWithDotIndicatorState
     extends State<HoriontalListViewWithDotIndicator> {
-  final List<CurrentAffair> currentAffairs = [
-    CurrentAffair(
-      title:
-          "Ukraine live briefing: Revolt calls into question Putin's grip on power and Wagner Group's future - The Washington Post",
-      description:
-          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership,The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadershipThe rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
-      date: 'July 1, 2023',
-    ),
-    CurrentAffair(
-      title:
-          "Ukraine live briefing: Revolt calls into question Putin's grip on power and Wagner Group's future - The Washington Post",
-      description:
-          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
-      date: 'July 1, 2023',
-    ),
-    CurrentAffair(
-      title:
-          "Ukraine live briefing: Revolt calls into question Putin's grip on power and Wagner Group's future - The Washington Post",
-      description:
-          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
-      date: 'July 1, 2023',
-    ),
-    CurrentAffair(
-      title:
-          "Ukraine live briefing: Revolt calls into question Putin's grip on power and Wagner Group's future - The Washington Post",
-      description:
-          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
-      date: 'July 1, 2023',
-    ),
-    CurrentAffair(
-      title:
-          "Ukraine live briefing: Revolt calls into question Putin's grip on power and Wagner Group's future - The Washington Post",
-      description:
-          'The rebellion led by Yevgeniy Prigozhin illuminated “cracks in the facade” of Putin’s leadership',
-      date: 'July 1, 2023',
-    ),
-  ];
+  List<Article> _articles = [];
+  bool _isLoading = false;
 
   final PageController _pageController = PageController();
   double _currentPageIndex = 0;
@@ -68,6 +43,39 @@ class _HoriontalListViewWithDotIndicatorState
         _currentPageIndex = _pageController.page!;
       });
     });
+    _loadArticles();
+  }
+
+  Future<void> _loadArticles() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final articles =
+          await fetchNewsArticles(category: "", pageSize: '5', country: 'in');
+      setState(() {
+        _articles = articles;
+      });
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Error'),
+          content: const Text('Failed to fetch news articles.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   void changeItem(int index) {
@@ -80,6 +88,18 @@ class _HoriontalListViewWithDotIndicatorState
       );
     });
   }
+
+  // void main() {
+  //   String publishedAt = "2023-06-26T09:38:00Z";
+
+  //   // Convert the string to DateTime
+  //   DateTime dateTime = DateTime.parse(publishedAt);
+
+  //   // Format the date as "dd/MM/yyyy"
+  //   String formattedDate = DateFormat('dd/MM/yyyy').format(dateTime);
+
+  //   // Output: 26/06/2023
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -100,69 +120,83 @@ class _HoriontalListViewWithDotIndicatorState
             child: PageView.builder(
               controller: _pageController,
               scrollDirection: Axis.horizontal,
-              itemCount: currentAffairs.length,
+              itemCount: _articles.length,
               itemBuilder: (context, index) {
-                final currentAffair = currentAffairs[index];
+                final article = _articles[index];
                 return Container(
                   width: 380,
                   margin: const EdgeInsets.all(8.0),
                   child: Card(
-                    color: const Color.fromARGB(255, 165, 221, 247),
-                    elevation: 2.0,
-                    shadowColor: Colors.black,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      color: const Color.fromARGB(255, 165, 221, 247),
+                      elevation: 2.0,
+                      shadowColor: Colors.black,
+                      clipBehavior: Clip.hardEdge,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NewsDetails(article: article),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                flex: 2,
-                                child: Text(
-                                  currentAffair.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                    overflow: TextOverflow.clip,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      article.title,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        overflow: TextOverflow.clip,
+                                      ),
+                                      maxLines: 1,
+                                    ),
                                   ),
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Text(
-                                  currentAffair.date,
-                                  style: const TextStyle(
-                                    color: darkBlue,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      DateFormat('dd/mm/yy').format(
+                                        DateTime.parse(article.publishedAt),
+                                      ),
+                                      style: const TextStyle(
+                                        color: darkBlue,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.end,
+                                    ),
                                   ),
-                                  textAlign: TextAlign.end,
-                                ),
+                                ],
                               ),
+                              const SizedBox(height: 12),
+                              Text(
+                                article.description,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                ),
+                                maxLines: 6,
+                                textAlign: TextAlign.justify,
+                              ),
+                              const SizedBox(height: 12),
                             ],
                           ),
-                          const SizedBox(height: 12),
-                          Text(
-                            currentAffair.description,
-                            style: const TextStyle(
-                              fontSize: 15,
-                            ),
-                            maxLines: 6,
-                          ),
-                          const SizedBox(height: 12),
-                        ],
-                      ),
-                    ),
-                  ),
+                        ),
+                      )),
                 );
               },
             ),
           ),
           DotsIndicator(
-            dotsCount: currentAffairs.length,
+            dotsCount: _articles.isNotEmpty ? _articles.length : 1,
             position: _currentPageIndex.toInt(),
             decorator: decorator,
             onTap: (pos) {

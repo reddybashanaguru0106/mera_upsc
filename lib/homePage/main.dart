@@ -4,9 +4,12 @@ import './widgets/my_subjects.dart';
 
 import 'widgets/my_opt_subjects.dart';
 import 'widgets/card_carousel.dart';
+import 'widgets/dashboard.dart';
 
 class MyDashboardBody extends StatelessWidget {
   const MyDashboardBody({super.key});
+  final country = 'in';
+  final query = 'upsc';
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,9 @@ class MyDashboardBody extends StatelessWidget {
               flex: 2,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const <Widget>[
-                  HoriontalListViewWithDotIndicator(),
+                children: <Widget>[
+                  HoriontalListViewWithDotIndicator(
+                      country: country, query: query),
                 ],
               ),
             ),
@@ -144,7 +148,37 @@ class MyDashboardBody extends StatelessWidget {
                                 child: MyOptSubjects(),
                               )
                             ],
-                          ))
+                          )),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 0,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+                                  ),
+                                  // Icon(
+                                  //   Icons.arrow_downward_rounded,
+                                  //   size: 10,
+                                  // ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: MyDashboard(),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                   // ),

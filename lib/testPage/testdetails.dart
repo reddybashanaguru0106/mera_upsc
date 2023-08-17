@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mcq.dart';
+// import 'mcq.dart';
 
 class MyTestDetails extends StatelessWidget {
   const MyTestDetails({super.key});
@@ -10,20 +10,21 @@ class MyTestDetails extends StatelessWidget {
         appBar: AppBar(
           title: const Center(child: Text('MERA UPSC')),
         ),
+        // ignore: avoid_unnecessary_containers
         body: Container(
           child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: myTests.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MyQuestions(),
-                      ),
-                    );
-                  },
+                  // onTap: () {
+                  //   Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => const MyQuestions(),
+                  //     ),
+                  //   );
+                  // },
                   child: Container(
                     width: 450,
                     height: 100,

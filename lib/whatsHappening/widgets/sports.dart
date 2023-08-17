@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mera_upsc/whatsHappening/helper/index.dart';
+import 'newsdetails.dart';
 
 class MyNewsTab extends StatefulWidget {
   final String category;
@@ -53,6 +54,10 @@ class _MySportsTabState extends State<MyNewsTab> {
     });
   }
 
+  bool _isValidUrl(String url) {
+    return Uri.tryParse(url)?.isAbsolute ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return _isLoading
@@ -67,6 +72,7 @@ class _MySportsTabState extends State<MyNewsTab> {
             itemBuilder: (context, index) {
               if (index < _articles.length) {
                 final article = _articles[index];
+                final imageUrl = article.imageUrl;
                 return Card(
                     clipBehavior: Clip.hardEdge,
                     child: InkWell(
@@ -75,12 +81,14 @@ class _MySportsTabState extends State<MyNewsTab> {
                       //   debugPrint('Card tapped.');
                       // },
                       child: ListTile(
-                        leading: Image.network(
-                          article.imageUrl,
-                          width: 64.0,
-                          height: 64.0,
-                          fit: BoxFit.cover,
-                        ),
+                        leading: _isValidUrl(imageUrl)
+                            ? Image.network(
+                                article.imageUrl,
+                                width: 64.0,
+                                height: 64.0,
+                                fit: BoxFit.cover,
+                              )
+                            : const Icon(Icons.image),
                         title: Text(
                           article.title,
                           style: const TextStyle(
@@ -88,6 +96,15 @@ class _MySportsTabState extends State<MyNewsTab> {
                           ),
                         ),
                         subtitle: Text(article.description),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NewsDetails(article: article),
+                            ),
+                          );
+                        },
                       ),
                     ));
               } else {

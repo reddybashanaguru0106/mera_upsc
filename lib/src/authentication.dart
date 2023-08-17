@@ -47,9 +47,14 @@ class AuthFunc extends StatelessWidget {
                     Card(
                       color: darkBlue,
                       child: ListTile(
-                        leading: const Icon(Icons.logout_outlined),
+                        textColor: Colors.white,
+                        leading: const Icon(
+                          Icons.logout_outlined,
+                          color: Colors.white,
+                        ),
                         title: const Text(
                           'Logout',
+                          // selectionColor: Colors.white,
                         ),
                         onTap: () {
                           final router = GoRouter.of(context);
@@ -62,7 +67,7 @@ class AuthFunc extends StatelessWidget {
                           signOut(); // Navigate to the 'sign-in' route
                         },
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
