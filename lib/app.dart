@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mera_upsc/chatScreen/chat_widget.dart';
 
 import 'drawer.dart';
 import 'homePage/main.dart';
@@ -52,7 +53,7 @@ class _BottomNavigationBarExampleState
     MyDashboardBody(),
     MyTestPage(),
     WhatsHappeningMain(),
-    // MyTestPage(),
+    MyChatWidget()
   ];
 
   void _onItemTapped(int index) {
@@ -154,18 +155,17 @@ class _BottomNavigationBarExampleState
                     color: Colors.black87,
                   ),
                 ),
-
-                // BottomNavigationBarItem(
-                //   icon: Icon(
-                //     Icons.leaderboard_outlined,
-                //     color: Colors.black87,
-                //   ),
-                //   label: 'leaderboard',
-                //   activeIcon: Icon(
-                //     Icons.leaderboard,
-                //     color: Colors.black87,
-                //   ),
-                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.chat_bubble_outline_outlined,
+                    color: Colors.black87,
+                  ),
+                  label: 'Chat',
+                  activeIcon: Icon(
+                    Icons.chat_bubble,
+                    color: Colors.black87,
+                  ),
+                ),
               ],
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,
