@@ -73,6 +73,7 @@ class _MySportsTabState extends State<MyNewsTab> {
               if (index < _articles.length) {
                 final article = _articles[index];
                 final imageUrl = article.imageUrl;
+                print(_articles);
                 return Card(
                     clipBehavior: Clip.hardEdge,
                     child: InkWell(

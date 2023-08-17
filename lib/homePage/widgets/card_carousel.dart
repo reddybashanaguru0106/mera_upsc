@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:mera_upsc/homePage/widgets/card_carousel_details.dart';
 import 'package:mera_upsc/whatsHappening/helper/index.dart';
 import 'package:intl/intl.dart';
-import 'package:mera_upsc/whatsHappening/widgets/newsdetails.dart';
 
 // import 'package:mera_upsc/whatsHappening/main.dart';
 
@@ -136,7 +136,7 @@ class _HoriontalListViewWithDotIndicatorState
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) =>
-                                  NewsDetails(article: article),
+                                  CardCarouselDetails(article: article),
                             ),
                           );
                         },
@@ -164,7 +164,7 @@ class _HoriontalListViewWithDotIndicatorState
                                   Expanded(
                                     flex: 2,
                                     child: Text(
-                                      DateFormat('dd/mm/yy').format(
+                                      DateFormat('dd/MM/yyyy').format(
                                         DateTime.parse(article.publishedAt),
                                       ),
                                       style: const TextStyle(

@@ -39,19 +39,26 @@ class Article {
   final String description;
   final String imageUrl;
   final String publishedAt;
+  final String content;
+  final String url;
 
   Article(
       {required this.title,
       required this.description,
       required this.imageUrl,
-      required this.publishedAt});
+      required this.publishedAt,
+      required this.content,
+      required this.url});
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-        title: json['title'] ?? "",
-        description: json['description'] ?? "",
-        imageUrl: json['urlToImage'] ?? "",
-        publishedAt: json['publishedAt'] ?? "");
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      imageUrl: json['urlToImage'] ?? "",
+      publishedAt: json['publishedAt'] ?? "",
+      content: json['content'] ?? "",
+      url: json['url'] ?? "",
+    );
   }
 }
 
