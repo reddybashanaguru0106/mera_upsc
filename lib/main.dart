@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mera_upsc/app.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'app_state.dart';
@@ -11,8 +12,9 @@ import 'app_state.dart';
 // import 'homePage/screen.dart';
 // import 'package:mera_upsc/footer.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
     create: (context) => ApplicationState(),
     builder: ((context, build) => const AppMain()),
