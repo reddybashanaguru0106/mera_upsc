@@ -386,58 +386,6 @@ class _ChatPageState extends State<ChatPage> {
           user: _user,
           onEndReached: _handleEndReached,
           bubbleBuilder: _bubbleBuilder,
-
-          // textMessageOptions: ,
-          // customMessageBuilder: (message, {required messageWidth}) {
-          //   print(message);
-          //   print(messageWidth);
-          //   return Column(
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: [
-          //       Padding(
-          //         padding: const EdgeInsets.only(left: 8, top: 4, bottom: 2),
-          //         child: Text(
-          //           '${message.author.firstName}', // Display user name
-          //           style: const TextStyle(
-          //             color: Colors.black, // Customize user name color
-          //             fontWeight: FontWeight.bold,
-          //           ),
-          //         ),
-          //       ),
-          //       Row(
-          //         crossAxisAlignment: CrossAxisAlignment.end,
-          //         children: [
-          //           Container(
-          //             decoration: BoxDecoration(
-          //               color:
-          //                   Colors.grey[300], // Customize message bubble color
-          //               borderRadius: BorderRadius.circular(12),
-          //             ),
-          //             margin: const EdgeInsets.all(8),
-          //             padding: const EdgeInsets.all(8),
-          //             child: Text(
-          //               '${message.repliedMessage}', // Display message text
-          //               style: const TextStyle(
-          //                 color: Colors.black, // Customize text color
-          //               ),
-          //             ),
-          //           ),
-          //           Padding(
-          //             padding: const EdgeInsets.only(left: 4),
-          //             child: Text(
-          //               DateFormat('HH:mm').format(
-          //                   DateTime.fromMillisecondsSinceEpoch(
-          //                       message.createdAt!)),
-          //               style: const TextStyle(
-          //                 color: Colors.grey, // Customize time color
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ],
-          //   );
-          // },
         ),
       );
 
