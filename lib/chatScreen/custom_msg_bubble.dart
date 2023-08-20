@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: library_prefixes
 import 'package:flutter_chat_ui/flutter_chat_ui.dart' as chatUI;
 import 'package:intl/intl.dart'; // Import the intl library for DateFormat
 
@@ -9,7 +10,7 @@ class CustomMessageBubble extends StatelessWidget {
   final Color timeColor;
   final chatUI.Message message; // Change the type of message parameter
 
-  CustomMessageBubble({
+  const CustomMessageBubble({
     Key? key,
     required this.message, // Update the parameter here
     required this.authorName,

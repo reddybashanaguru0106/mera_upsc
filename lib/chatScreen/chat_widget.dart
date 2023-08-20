@@ -13,8 +13,8 @@ import 'package:mime/mime.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
-import 'package:intl/intl.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:intl/intl.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -191,6 +191,7 @@ class _ChatPageState extends State<ChatPage> {
       messageType = 'text';
     }
 
+    // ignore: avoid_print
     print(message);
 
     final messageData = {

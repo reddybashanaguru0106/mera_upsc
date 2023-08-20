@@ -77,6 +77,7 @@ class AppBarExample extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
             label: const Text('Show Snackbar'),
             style: ElevatedButton.styleFrom(
+              // ignore: deprecated_member_use
               primary: Colors.transparent,
               shadowColor: Colors.transparent,
               elevation: 0,

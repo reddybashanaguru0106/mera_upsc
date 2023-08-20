@@ -5,6 +5,7 @@ const Color saffron = Color.fromRGBO(255, 103, 31, 1);
 const Color navyBlue = Color.fromRGBO(0, 0, 128, 1);
 
 class MyTopicDetail extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final topic;
   const MyTopicDetail({super.key, required this.topic});
 

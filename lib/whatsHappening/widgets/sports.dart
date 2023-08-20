@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mera_upsc/whatsHappening/helper/index.dart';
-import 'newsdetails.dart';
+// import 'newsdetails.dart';
 
 class MyNewsTab extends StatefulWidget {
   final String category;
@@ -73,6 +73,7 @@ class _MySportsTabState extends State<MyNewsTab> {
               if (index < _articles.length) {
                 final article = _articles[index];
                 final imageUrl = article.imageUrl;
+                // ignore: avoid_print
                 print(_articles);
                 return Card(
                     clipBehavior: Clip.hardEdge,
@@ -97,15 +98,15 @@ class _MySportsTabState extends State<MyNewsTab> {
                           ),
                         ),
                         subtitle: Text(article.description),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  NewsDetails(article: article),
-                            ),
-                          );
-                        },
+                        // onTap: () {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) =>
+                        //           NewsDetails(article: article),
+                        //     ),
+                        //   );
+                        // },
                       ),
                     ));
               } else {

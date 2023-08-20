@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
-import 'package:flutter_html/flutter_html.dart';
+// import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -11,6 +13,7 @@ class NewsDetails extends StatefulWidget {
   const NewsDetails({Key? key, required this.article}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _NewsDetailsState createState() => _NewsDetailsState();
 }
 
@@ -26,6 +29,7 @@ class _NewsDetailsState extends State<NewsDetails> {
   Future<void> _fetchFullArticleContent() async {
     try {
       final response = await http.get(Uri.parse(widget.article.url));
+      // ignore: avoid_print
       print(Uri.parse(widget.article.url));
       if (response.statusCode == 200) {
         final document = parser.parse(response.body);
@@ -41,6 +45,7 @@ class _NewsDetailsState extends State<NewsDetails> {
         }
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Error fetching full article content: $e');
       setState(() {
         fullArticleContent = 'Error loading full content.';
@@ -87,10 +92,10 @@ class _NewsDetailsState extends State<NewsDetails> {
               ),
             ),
             Image(image: NetworkImage(widget.article.imageUrl)),
-            if (fullArticleContent.isNotEmpty) ...[
-              const SizedBox(height: 16.0),
-              Html(data: fullArticleContent), // Render HTML content
-            ],
+            // if (fullArticleContent.isNotEmpty) ...[
+            //   const SizedBox(height: 16.0),
+            //   Html(data: fullArticleContent), // Render HTML content
+            // ],
           ],
         ),
       ),

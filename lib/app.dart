@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mera_upsc/chatScreen/chat_widget.dart';
+import 'chatgpt/main.dart';
 
 import 'drawer.dart';
 import 'homePage/main.dart';
@@ -53,7 +54,8 @@ class _BottomNavigationBarExampleState
     MyDashboardBody(),
     MyTestPage(),
     WhatsHappeningMain(),
-    MyChatWidget()
+    MyChatWidget(),
+    ChatgptWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -163,6 +165,17 @@ class _BottomNavigationBarExampleState
                   label: 'Chat',
                   activeIcon: Icon(
                     Icons.chat_bubble,
+                    color: Colors.black87,
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.chat_bubble_outline_outlined,
+                    color: Colors.black87,
+                  ),
+                  label: 'ChatGpt',
+                  activeIcon: Icon(
+                    Icons.medical_information_sharp,
                     color: Colors.black87,
                   ),
                 ),

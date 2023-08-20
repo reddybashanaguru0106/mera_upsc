@@ -15,6 +15,7 @@ class NavBar extends StatelessWidget {
 
   Future<User?> _getCurrentUser() async {
     final user = FirebaseAuth.instance.currentUser;
+    // ignore: avoid_print
     print(user);
     return user;
   }
