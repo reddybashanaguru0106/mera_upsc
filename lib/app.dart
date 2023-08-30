@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mera_upsc/chatScreen/chat_widget.dart';
 import 'chatgpt/main.dart';
-
+import 'package:mera_upsc/payment/main.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'drawer.dart';
 import 'homePage/main.dart';
 import 'testPage/content.dart';
@@ -31,7 +33,6 @@ class MyApp extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
         ),
-        // useMaterial3: true,
       ),
     );
   }
@@ -48,14 +49,13 @@ class BottomNavigationBarExample extends StatefulWidget {
 class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
   int _selectedIndex = 0;
-  // static const TextStyle optionStyle =
-  //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     MyDashboardBody(),
     MyTestPage(),
     WhatsHappeningMain(),
     MyChatWidget(),
     ChatgptWidget(),
+    // PaymentWidget(), // Add the PaymentWidget here
   ];
 
   void _onItemTapped(int index) {
@@ -95,7 +95,6 @@ class _BottomNavigationBarExampleState
             },
           ),
         ],
-        // backgroundColor: const Color.fromARGB(179, 31, 78, 231),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -170,12 +169,12 @@ class _BottomNavigationBarExampleState
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.chat_bubble_outline_outlined,
+                    Icons.question_answer_outlined,
                     color: Colors.black87,
                   ),
                   label: 'ChatGpt',
                   activeIcon: Icon(
-                    Icons.medical_information_sharp,
+                    Icons.question_answer,
                     color: Colors.black87,
                   ),
                 ),

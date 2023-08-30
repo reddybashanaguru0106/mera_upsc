@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
-import 'dart:developer';
-import 'dart:math';
+// import 'dart:developer';
+// import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -80,7 +80,7 @@ class _MyQuestionsState extends State<MyQuestions> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: questions.isEmpty ? 0 : questions.length,
                       itemBuilder: (context, index) {
-                        final question = questions[index];
+                        final d = questions[index];
                         return Container(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                           margin: const EdgeInsets.all(8),
@@ -95,7 +95,7 @@ class _MyQuestionsState extends State<MyQuestions> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      '${index + 1}. ${question['question']}',
+                                      '${index + 1}. ${d['question']}',
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
@@ -104,75 +104,76 @@ class _MyQuestionsState extends State<MyQuestions> {
                                   ),
                                   const SizedBox(height: 2),
                                   RadioListTile<int?>(
-                                    title: Text("A. ${question['A']}"),
+                                    title: Text("A. ${d['A']}"),
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(16, 0, 8, 0),
                                     value: 1,
-                                    groupValue:
-                                        mcqState.getOption(question['id']),
+                                    groupValue: mcqState.getOption(d['id']),
                                     onChanged: (value) {
+                                      // ignore: avoid_print
                                       print(
-                                          'Selected option for ${question['id']} changed to $value');
+                                          'Selected option for ${d['id']} changed to $value');
 
-                                      mcqState.setOption(question['id'], value);
+                                      mcqState.setOptionQuestion(d['id'], value,
+                                          d as Map<String, dynamic>);
                                     },
-                                    secondary: question['answer'] ==
-                                            optionsMap['1']
-                                        ? const Icon(Icons.check_circle,
-                                            color: Colors
-                                                .green) // Add the green tick mark icon
-                                        : null, // Set to null if it's not the correct option
+                                    // secondary: d['answer'] ==
+                                    //         optionsMap['1']
+                                    //     ? const Icon(Icons.check_circle,
+                                    //         color: Colors
+                                    //             .green) // Add the green tick mark icon
+                                    //     : null, // Set to null if it's not the correct option
                                   ),
                                   RadioListTile<int?>(
-                                    title: Text("B. ${question['B']}"),
+                                    title: Text("B. ${d['B']}"),
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(16, 0, 8, 0),
                                     value: 2,
-                                    groupValue:
-                                        mcqState.getOption(question['id']),
+                                    groupValue: mcqState.getOption(d['id']),
                                     onChanged: (value) {
-                                      mcqState.setOption(question['id'], value);
+                                      mcqState.setOptionQuestion(d['id'], value,
+                                          d as Map<String, dynamic>);
                                     },
-                                    secondary: question['answer'] ==
-                                            optionsMap['2']
-                                        ? const Icon(Icons.check_circle,
-                                            color: Colors
-                                                .green) // Add the green tick mark icon
-                                        : null,
+                                    // secondary: d['answer'] ==
+                                    //         optionsMap['2']
+                                    //     ? const Icon(Icons.check_circle,
+                                    //         color: Colors
+                                    //             .green) // Add the green tick mark icon
+                                    //     : null,
                                   ),
                                   RadioListTile<int?>(
-                                    title: Text("C. ${question['C']}"),
+                                    title: Text("C. ${d['C']}"),
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(16, 0, 8, 0),
                                     value: 3,
-                                    groupValue:
-                                        mcqState.getOption(question['id']),
+                                    groupValue: mcqState.getOption(d['id']),
                                     onChanged: (value) {
-                                      mcqState.setOption(question['id'], value);
+                                      mcqState.setOptionQuestion(d['id'], value,
+                                          d as Map<String, dynamic>);
                                     },
-                                    secondary: question['answer'] ==
-                                            optionsMap['3']
-                                        ? const Icon(Icons.check_circle,
-                                            color: Colors
-                                                .green) // Add the green tick mark icon
-                                        : null,
+                                    // secondary: d['answer'] ==
+                                    //         optionsMap['3']
+                                    //     ? const Icon(Icons.check_circle,
+                                    //         color: Colors
+                                    //             .green) // Add the green tick mark icon
+                                    //     : null,
                                   ),
                                   RadioListTile<int?>(
-                                    title: Text("D. ${question['D']}"),
+                                    title: Text("D. ${d['D']}"),
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(16, 0, 8, 0),
                                     value: 4,
-                                    groupValue:
-                                        mcqState.getOption(question['id']),
+                                    groupValue: mcqState.getOption(d[
+                                        'id']), // Use the selected option from the provider
                                     onChanged: (value) {
-                                      mcqState.setOption(question['id'], value);
+                                      mcqState.setOptionQuestion(d['id'], value,
+                                          d as Map<String, dynamic>);
                                     },
-                                    secondary: question['answer'] ==
-                                            optionsMap['4']
-                                        ? const Icon(Icons.check_circle,
-                                            color: Colors
-                                                .green) // Add the green tick mark icon
-                                        : null,
+                                    // secondary:
+                                    //     d['answer'] == optionsMap['4']
+                                    //         ? const Icon(Icons.check_circle,
+                                    //             color: Colors.green)
+                                    //         : null,
                                   ),
                                   // Implement your RadioListTiles here
                                 ],
@@ -184,20 +185,61 @@ class _MyQuestionsState extends State<MyQuestions> {
                     ),
                     ElevatedButton(
                       onPressed: () async {
-                        // print(mcqState.getSelectedQuestionsList());
                         final userId =
                             user?.uid; // Get the current user's ID here;
                         final timestamp = FieldValue.serverTimestamp();
-
-                        await FirebaseFirestore.instance
-                            .collection('tests')
-                            .add({
+                        final uniqueTestName =
+                            'test_${DateTime.now().millisecondsSinceEpoch}';
+                        final correctlyAnsweredCount = mcqState
+                            .getSelectedQuestionsList()
+                            .where((element) {
+                          final alphabetSelectedOption =
+                              optionsMap[element['selectedOption']];
+                          final correctAnswer = element['d']['answer'];
+                          return alphabetSelectedOption == correctAnswer;
+                        }).length;
+                        final attemptedQCount =
+                            mcqState.getSelectedQuestionsList().length;
+                        final testScore =
+                            (correctlyAnsweredCount / questions.length) * 100;
+                        final test = {
                           'userId': userId,
-                          'testName': 'test_${timestamp}',
+                          'testName': uniqueTestName,
                           'attemptedQuestions':
                               mcqState.getSelectedQuestionsList(),
                           'timestamp': timestamp,
-                        });
+                          'attemptedQCount': attemptedQCount,
+                          'correctQCount': correctlyAnsweredCount,
+                          'score': testScore,
+                          'questions': questions,
+                        };
+                        print(test);
+
+                        await FirebaseFirestore.instance
+                            .collection('tests')
+                            .add(test);
+
+                        // Show the pop-up message
+                        // ignore: use_build_context_synchronously
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text('Test Submitted'),
+                              content: const Text(
+                                  'Your test has been submitted successfully.'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pop(); // Close the dialog
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                       child: const Text('Submit'),
                     ),
